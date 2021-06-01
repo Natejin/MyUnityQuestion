@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>SetFloatOfSmoothness</Title>
+      <Shortcut>SetFloatOfSmoothness</Shortcut>
+      <Shortcut>SFSN</Shortcut>
+      <Description>
+        Set Float of "_Smoothness"
+      </Description>
+      <Author>NateJin</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Transform</ID>
+          <Default>transform</Default>
+          <ToolTip>The Object name for which want to set smoothness</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>Smoothness</ID>
+          <Default>smoothness</Default>
+          <ToolTip>The value of smoothness you want to set</ToolTip>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp">
+        <![CDATA[
+        $Treansform$.GetComponent<Renderer>().material.SetFloat("_Smoothness", $Smoothness$);
+      ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

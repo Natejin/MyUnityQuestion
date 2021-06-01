@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>UnityDebugLogError</Title>
+			<Shortcut>UDE</Shortcut>
+			<Description>Code snippet for 'Debug_Log_Error'</Description>
+			<Author>NateJin</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+				<SnippetType>SurroundsWith</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>Message</ID>
+					<Default>Message</Default>
+					<ToolTip>Message</ToolTip>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+        <![CDATA[
+Debug.LogError($Message$);
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

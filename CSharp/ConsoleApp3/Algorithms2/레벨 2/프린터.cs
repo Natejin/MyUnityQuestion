@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace ConsoleApp3.Algorithms2.레벨_2
 {
 //문제 설명
@@ -52,6 +52,45 @@ namespace ConsoleApp3.Algorithms2.레벨_2
 
     class 프린터
     {
+        public int solution(int[] priorities, int location)
+        {
+            List<int> list = priorities.ToList();
+            List<int> order = new List<int>();
 
+            for (int i = 0; i < list.Count; i++)
+            {
+                order.Add(i + 1);
+            }
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = i + 1; j < list.Count; j++)
+                {
+                    if (list[i] < list[j])
+                    {
+                        int prior = list[i];
+                        list.RemoveAt(i);
+                        list.Add(prior);
+
+                        prior = order[i];
+                        order.RemoveAt(i);
+                        order.Add(prior);
+
+                        i--;
+                        break;
+                    }
+                }
+            }
+
+            var tempLoc = location + 1;
+            for (int i = 0; i < order.Count; i++)
+            {
+                if (tempLoc == order[i])
+                {
+                    return i + 1;
+                }
+            }
+            return -1;
+        }
     }
 }

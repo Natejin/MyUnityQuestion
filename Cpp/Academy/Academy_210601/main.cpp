@@ -187,6 +187,8 @@ cout << "												   " << endl;
 
 
 
+
+
 	//MyClass myclass1('2', 23, "노래듣기");
 	//myclass1.ShowInfo();
 

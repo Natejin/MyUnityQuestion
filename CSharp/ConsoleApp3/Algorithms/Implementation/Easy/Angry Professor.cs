@@ -30,7 +30,16 @@ namespace ConsoleApp3.Algorithms.Implementation.Easy.Angry_Professor
 
         public static string angryProfessor(int k, List<int> a)
         {
+            int answer = 0;
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (a[i] <= 0)
+                {
+                    answer++;
+                }
+            }
 
+            return answer >= k ? "NO" : "YES";
         }
 
     }

@@ -17,25 +17,21 @@ namespace ConsoleApp3.Algorithms.Implementation.Easy.Beautiful_Days_at_the_Movie
 
     class Result
     {
-
-        /*
-         * Complete the 'beautifulDays' function below.
-         *
-         * The function is expected to return an INTEGER.
-         * The function accepts following parameters:
-         *  1. INTEGER i
-         *  2. INTEGER j
-         *  3. INTEGER k
-         */
         public static int beautifulDays(int i, int j, int k)
         {
             int answer = 0;
+            if (j < k)
+            {
+                return 0;
+            }
+
             for (int a = i; a <= j; a++)
             {
                 var charArray = i.ToString().ToCharArray();
                 string finalResult = ReverseInput(new string(charArray, 0, charArray.Length)).TrimStart('0');
                 if (Math.Abs(i - int.Parse(finalResult)) % k == 0)
                 {
+                    Console.WriteLine(i - int.Parse(finalResult) + " || " + k + " || ");
                     answer++;
                 }
                 i++;

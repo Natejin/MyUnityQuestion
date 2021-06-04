@@ -14,7 +14,6 @@ namespace ConsoleApp3.Algorithms.Implementation.Easy
             if (distanceFromCatA > distanceFromCatB) return "Cat A";
             else if ((distanceFromCatA < distanceFromCatB)) return "Cat B";
             else return "Mouse C";
-
         }
 
         static void Main(string[] args)

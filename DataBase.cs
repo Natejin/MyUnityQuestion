@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class DataBase : MonoBehaviour
+using System.Linq;
+public class 프로그래머스 
 {
-
-    public List<Item_Data> callme;
+    
+    
 }

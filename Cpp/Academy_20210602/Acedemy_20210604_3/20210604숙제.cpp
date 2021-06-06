@@ -23,7 +23,7 @@ int main() {
 		case 1:
 			//구구단을 출력 
 			//2중포문 돌려 만들기
-			for (int i = 1; i < 10; i++)
+			for (int i = 2; i < 10; i++)
 			{
 				cout << "구구단 " << i << " 단" << endl;
 				for (int j = 1; j < 10; j++)

@@ -1,0 +1,4 @@
+﻿  HackerRank.cpp
+  Sales by Match.cpp
+  Generating Code...
+D:\Github\CodeTest\HackerRank\HackerRank\Sales by Match.cpp(20): error C4716: 'sockMerchant': must return a value

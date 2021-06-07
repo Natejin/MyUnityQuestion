@@ -16,7 +16,41 @@ vector<string> split(const string&);
  */
 
 int sockMerchant(int n, vector<int> ar) {
+    map<int, int> map;
+    for (size_t i = 0; i < ar.size(); i++)
+    {
+        if (map.find(ar[i]) != map.end())
+        {
+            map[ar[i]]++;
+        }
+        else {
+            map.insert(make_pair(ar[i], 1));
+        }
+    }
 
+    int answer = 0;
+
+    for (auto iter : map)
+    {
+        answer += iter.second / 2;
+    }
+    return answer;
+}
+
+int sockMerchant1(int n, vector<int> ar) {
+    int temp[101] = {};
+    for (size_t i = 0; i < ar.size(); i++)
+    {
+        temp[ar[i]]++;
+    }
+
+    int answer = 0;
+
+    for (auto iter : temp)
+    {
+        answer += iter / 2;
+    }
+    return answer;
 }
 
 int main()

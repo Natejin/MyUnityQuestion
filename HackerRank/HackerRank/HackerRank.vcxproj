@@ -139,7 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Counting Valleys.cpp" />
     <ClCompile Include="HackerRank.cpp" />
+    <ClCompile Include="Jumping on the Clouds.cpp" />
     <ClCompile Include="Sales by Match.cpp" />
   </ItemGroup>
   <ItemGroup>

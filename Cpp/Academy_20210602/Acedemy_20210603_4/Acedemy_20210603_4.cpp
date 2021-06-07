@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-static const char* RockPaperScissors[] = { "가위", "바위", "보" };
+static const char* Skill[] = { "가위", "바위", "보" };
 
 int main() {
 	int player, computer;
@@ -24,7 +24,7 @@ int main() {
 		}
 		int result = player - computer;
 		
-		cout << "당신의 손모양은 " << RockPaperScissors[player] << " 이며 컴퓨터의 손모양은 " << RockPaperScissors[computer] << " 이므로 ";
+		cout << "당신의 손모양은 " << Skill[player] << " 이며 컴퓨터의 손모양은 " << Skill[computer] << " 이므로 ";
 		if (result == 0)
 		{
 			cout << "당신은 비겼습니다." << endl;

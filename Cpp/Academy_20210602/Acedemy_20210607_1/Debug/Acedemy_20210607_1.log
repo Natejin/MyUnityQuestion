@@ -1,0 +1,4 @@
+﻿  Acedemy_20210607_1.cpp
+C:\Users\KGA_19\Documents\GitHub\CodeTest\Cpp\Academy_20210602\Acedemy_20210607_1\Acedemy_20210607_1.cpp(19,38): error C3861: 'divide': 식별자를 찾을 수 없습니다.
+C:\Users\KGA_19\Documents\GitHub\CodeTest\Cpp\Academy_20210602\Acedemy_20210607_1\Acedemy_20210607_1.cpp(22,6): error C2086: 'int a': 재정의
+C:\Users\KGA_19\Documents\GitHub\CodeTest\Cpp\Academy_20210602\Acedemy_20210607_1\Acedemy_20210607_1.cpp(12): message : 'a' 선언을 참조하십시오.

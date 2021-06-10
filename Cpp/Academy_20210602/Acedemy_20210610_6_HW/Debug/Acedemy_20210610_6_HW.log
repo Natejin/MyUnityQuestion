@@ -1,0 +1,4 @@
+﻿  Acedemy_20210610_6_HW.cpp
+D:\Github\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
+D:\Github\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(341,23): warning C4018: '<': signed/unsigned mismatch
+  Acedemy_20210610_6_HW.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Acedemy_20210610_6_HW.exe

@@ -20,19 +20,19 @@ bool checkNum[25] = {};
 struct Bingo
 {
 	string name = "";
-	int bingo[25] = {};
+	int bingo[Max] = {};
 	int count = 0;
-	bool checkPos[25] = {};
+	bool checkPos[Max] = {};
 
 	void RandomNumGen() {
-		bool checkNum1[25] = {};
+		bool checkNum1[Max] = {};
 		for (size_t i = 0; i < Max; i++)
 		{
 			bool isCheck = true;
 
 			while (isCheck)
 			{
-				int randNum = rand() % 25;
+				int randNum = rand() % Max;
 
 				if (checkNum1[randNum] == false)
 				{
@@ -71,7 +71,7 @@ int main(){
 	{
 		int input;
 		system("cls");
-		for (size_t i = 0; i < 25; i++)
+		for (size_t i = 0; i < Max; i++)
 		{
 			if (checkNum[i])
 			{
@@ -107,12 +107,12 @@ void PlayerInput(Bingo& player, Bingo& computer) {
 	{
 		cout << text << " : ";
 		cin >> input;
-		if (input > 0 && input < 26)
+		if (input > 0 && input < Max+1)
 		{
 			if (checkNum[input - 1] == false)
 			{
 				checkNum[input - 1] = true;
-				for (size_t i = 0; i < 25; i++)
+				for (size_t i = 0; i < Max; i++)
 				{
 					if (player.bingo[i] == input)
 					{
@@ -140,11 +140,11 @@ void PlayerInput(Bingo& player, Bingo& computer) {
 int ComputerInput(Bingo& player, Bingo& computer) {
 	while (true)
 	{
-		int randNum = rand() % 25;
+		int randNum = rand() % Max;
 
 		if (checkNum[randNum] == false)
 		{
-			for (size_t i = 0; i < 25; i++)
+			for (size_t i = 0; i < Max; i++)
 			{
 				if (player.bingo[i] == randNum + 1)
 				{
@@ -197,7 +197,7 @@ int CheckBingo(Bingo bingo) {
 	bool isCrossLine = false;
 	bool isInvertCrossLine = false;
 	int answer = 0;
-	for (size_t i = 0; i < 25; i++)
+	for (size_t i = 0; i < Max; i++)
 	{
 		int horiLine = i / 5;
 		int vertiLine = i % 5;
@@ -237,7 +237,7 @@ int CheckBingo(Bingo bingo) {
 		}
 
 		//맨첫자리와 마지막자리는 필요없음
-		if (i > 0 && i < 24)
+		if (i > 0 && i < Max-1)
 		{
 			//역대각선
 			//현재 역대각선 라인이 트루인지 체크 

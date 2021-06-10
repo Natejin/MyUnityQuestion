@@ -225,24 +225,27 @@ void RotateMatrix(int** arr) {
 
 
 void BaseBallGame() {
-	//0~8 숫자허용
-		//3개만 받는다
-
-		//컴퓨터가 먼저 랜덤한 숫자를 3개
-		//사용자가 3개만 입력 받는다.
-		// 자리하고 숫자가 동일 1s
-		// 숫자만 동일하다면 1b
-
-		//종료조건은 스트라이크가 3이면 종료
-		//몇번만에 마쳤냐?
-
 	int playerPos[3], comPos[3], result[3];
-	bool playerNumUsed[9];
-	bool comNumUsed[9];
+	bool playerNumUsed[9] = {};
+	bool comNumUsed[9] = {};
 	int strike = 0;
 	int ball = 0;
 	int match = 1;
 	srand(time(NULL));
+	//컴퓨터 랜덤 값 구하기
+	int computerRandomPos = 0;
+	while (computerRandomPos < 3)
+	{
+		int randNum = rand() % 8;
+		if (comNumUsed[randNum] == false)
+		{
+			comPos[computerRandomPos] = randNum;
+			comNumUsed[randNum] = true;
+			computerRandomPos++;
+		}
+	}
+
+
 	while (strike < 3)
 	{
 		cout << match << " 매치" << endl;
@@ -253,19 +256,8 @@ void BaseBallGame() {
 			comNumUsed[i] = false;
 		}
 
-		//컴퓨터 랜덤 값 구하기
-		int computerRandomPos = 0;
-		while (computerRandomPos < 3)
-		{
-			int randNum = rand() % 8;
-			if (comNumUsed[randNum] == false)
-			{
-				comPos[computerRandomPos] = randNum;
-				comNumUsed[randNum] = true;
-				computerRandomPos++;
-			}
-		}
-		cout << "컴퓨터값" << comPos[0] << " , " << comPos[1] << " , " << comPos[2] << endl;
+		//디버그용
+		//cout << "컴퓨터값" << comPos[0] << " , " << comPos[1] << " , " << comPos[2] << endl;
 		for (size_t i = 0; i < 3; i++)
 		{
 			bool isInputing = true;
@@ -298,12 +290,7 @@ void BaseBallGame() {
 			cout << "플레이어 공 " << playerPos[i] << " 이므로 ";
 			if (comPos[i] == playerPos[i])
 			{
-				strike++;
-				cout << strike << "스트라이크" << endl;
-				if (strike > 2)
-				{
-					break;
-				}
+				cout << "스트라이크" << endl;
 			}
 			else {
 				bool isBall = false;
@@ -311,8 +298,7 @@ void BaseBallGame() {
 				{
 					if (comPos[j] == playerPos[i])
 					{
-						ball++;
-						cout << ball << "볼" << endl;
+						cout  << "볼" << endl;
 						isBall = true;
 						break;
 					}
@@ -330,5 +316,5 @@ void BaseBallGame() {
 
 	cout << "3 스트라이크 게임오버 아웃~~~~~" << endl;
 	cout << "=============================" << endl;
-	cout << "전적 총 " << match << "매치 (" << ball << "볼 3스트라이크)";
+	cout << "전적 총 " << match << "매치";
 }

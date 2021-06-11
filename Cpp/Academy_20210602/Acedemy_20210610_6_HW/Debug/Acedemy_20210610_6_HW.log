@@ -1,4 +1,5 @@
 ﻿  Acedemy_20210610_6_HW.cpp
-D:\Github\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
-D:\Github\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(341,23): warning C4018: '<': signed/unsigned mismatch
-  Acedemy_20210610_6_HW.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Acedemy_20210610_6_HW.exe
+C:\Mine\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(66,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+C:\Mine\CodeTest\Cpp\Academy_20210602\Acedemy_20210610_6_HW\Acedemy_20210610_6_HW.cpp(317,23): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  LINK : C:\Mine\CodeTest\Cpp\Academy_20210602\Debug\Acedemy_20210610_6_HW.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+  Acedemy_20210610_6_HW.vcxproj -> C:\Mine\CodeTest\Cpp\Academy_20210602\Debug\Acedemy_20210610_6_HW.exe

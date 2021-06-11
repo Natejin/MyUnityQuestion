@@ -1,0 +1,3 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 중간 디렉터리(Debug\)에 다른 프로젝트(Academy_20210611_2.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  Academy_20210611_2.cpp
+  Academy_20210611_2.vcxproj -> C:\Mine\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_2_클래스의 생성자.exe

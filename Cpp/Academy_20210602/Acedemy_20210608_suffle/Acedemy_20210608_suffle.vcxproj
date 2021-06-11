@@ -24,6 +24,7 @@
     <ProjectGuid>{c6d8620c-85e0-4a55-a406-97d0d8da298a}</ProjectGuid>
     <RootNamespace>Acedemy20210608suffle</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Academy_20210608_suffle</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

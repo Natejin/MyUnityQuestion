@@ -24,6 +24,7 @@
     <ProjectGuid>{4983ec10-44dd-4dd2-857a-dfad791fc2fa}</ProjectGuid>
     <RootNamespace>Acedemy20210607Overload</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Academy_20210607_Overload</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

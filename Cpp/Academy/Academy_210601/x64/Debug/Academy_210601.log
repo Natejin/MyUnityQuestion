@@ -1,4 +1,1 @@
-﻿  main.cpp
-D:\Github\CodeTest\Cpp\Academy\Academy_210601\main.cpp(59,6): warning C4102: 'start': unreferenced label
-D:\Github\CodeTest\Cpp\Academy\Academy_210601\main.cpp(110,8): warning C4102: 'togoing': unreferenced label
-  Academy_210601.vcxproj -> D:\Github\CodeTest\Cpp\Academy\x64\Debug\Academy_210601.exe
+﻿  Academy_210601.vcxproj -> C:\Mine\CodeTest\Cpp\Academy\x64\Debug\Academy_210601.exe

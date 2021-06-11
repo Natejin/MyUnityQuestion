@@ -33,6 +33,9 @@
     <ClCompile Include="Jumping on the Clouds.cpp">
       <Filter>Source Files\InterviewKit\WarmUpChanllenges</Filter>
     </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files\InterviewKit\WarmUpChanllenges</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdc++.h">

@@ -1,4 +1,7 @@
-﻿  SliderPuzzle.cpp
+﻿  Position.cpp
+  SliderPuzzle.cpp
   소스.cpp
-  코드를 생성하고 있습니다...
-  Academy_20210611_5.vcxproj -> C:\Mine\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_5_HW.exe
+  Generating Code...
+D:\Github\CodeTest\Cpp\Academy_20210602\Academy_20210611_5\Algoritsm.h(34): warning C4715: 'Algoritsm::FindXPosition': not all control paths return a value
+  LINK : D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_5_HW.exe not found or not built by the last incremental link; performing full link
+  Academy_20210611_5.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_5_HW.exe

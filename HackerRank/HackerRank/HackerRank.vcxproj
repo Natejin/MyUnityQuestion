@@ -143,6 +143,7 @@
     <ClCompile Include="HackerRank.cpp" />
     <ClCompile Include="Jumping on the Clouds.cpp" />
     <ClCompile Include="Sales by Match.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdc++.h" />

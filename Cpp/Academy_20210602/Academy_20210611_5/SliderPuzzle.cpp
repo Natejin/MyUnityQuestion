@@ -237,8 +237,6 @@ void SliderPuzzle::Swap(Position origin, Position target) {
 	int temp = slidePuzzle[origin.x][origin.y];
 	slidePuzzle[origin.x][origin.y] = slidePuzzle[target.x][target.y];
 	slidePuzzle[target.x][target.y] = temp;
-
-
 }
 
 

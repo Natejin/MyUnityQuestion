@@ -140,7 +140,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algoritsm.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="SliderPuzzle.cpp" />
     <ClCompile Include="소스.cpp" />

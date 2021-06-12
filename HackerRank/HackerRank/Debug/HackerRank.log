@@ -1,4 +1,3 @@
-﻿  HackerRank.cpp
-  Sales by Match.cpp
-  Generating Code...
-D:\Github\CodeTest\HackerRank\HackerRank\Sales by Match.cpp(20): error C4716: 'sockMerchant': must return a value
+﻿  Jumping on the Clouds.cpp
+D:\Github\CodeTest\HackerRank\HackerRank\Jumping on the Clouds.cpp(20,20): warning C4018: '<': signed/unsigned mismatch
+  HackerRank.vcxproj -> D:\Github\CodeTest\HackerRank\Debug\HackerRank.exe

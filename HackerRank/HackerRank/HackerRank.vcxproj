@@ -139,11 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Counting Valleys.cpp" />
+    <ClCompile Include="Counting Valleys.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="HackerRank.cpp" />
     <ClCompile Include="Jumping on the Clouds.cpp" />
-    <ClCompile Include="Sales by Match.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Sales by Match.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdc++.h" />

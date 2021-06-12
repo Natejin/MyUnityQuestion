@@ -14,12 +14,48 @@ vector<string> split(const string&);
  */
 
 int jumpingOnClouds(vector<int> c) {
-
+    int moveCount = 0;
+    size_t i = 0;
+    int size = c.size() - 2;
+    for (i = 0; i < size; i++)
+    {
+        if (c[i + 1] == 0)
+        {
+            if (c[i + 2] == 0)
+            {
+                i++;
+            }
+        }
+        else {
+            i++;
+        }
+        moveCount++;
+    }
+    if (i < c.size() - 1)
+    {
+        moveCount++;
+    }
+    return moveCount;
 }
 
+/*
+0 0 0 0     2 i + 2
+0 1 0 0     2 i + 2
+0 0 1 0     2 i + 2
+
+
+0 0 0 1     2 i + 3
+0 1 0 1     2 i + 3
+
+0 1 0
+0 0 0
+
+0 0
+
+0
+*/
 int main()
 {
-
     string n_temp;
     getline(cin, n_temp);
 
@@ -39,6 +75,7 @@ int main()
     }
 
     int result = jumpingOnClouds(c);
+    cout << result << endl;
     return 0;
 }
 

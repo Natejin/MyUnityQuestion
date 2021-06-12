@@ -26,7 +26,6 @@ int main() {
 			isSolvable = false;
 		}
 	}
-
 	Sleep(1000);
 
 	string textOutput = "";

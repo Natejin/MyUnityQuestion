@@ -32,44 +32,6 @@ void SliderPuzzle::Suffle()
 
 	for (int i = 0; i < 100000; i++)
 	{
-		//int currentIndex = rand() % 4;
-		//int StartCol = rand() % 4;
-		/*int Random = rand() % 2 * -2 + 1;
-		int tmp = slidePuzzle[currentIndex.x][currentIndex.y];
-		if (Random == -1)
-		{
-			if (currentIndex.x == 0)
-			{
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x + 1][currentIndex.y];
-				slidePuzzle[currentIndex.x + 1][currentIndex.y] = tmp;
-			}
-			else if (currentIndex.x == 3)
-			{
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x - 1][currentIndex.y];
-				slidePuzzle[currentIndex.x - 1][currentIndex.y] = tmp;
-			}
-			else {
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x + Random][currentIndex.y];
-				slidePuzzle[currentIndex.x + Random][currentIndex.y] = tmp;
-			}
-		}
-		else {
-			if (currentIndex.y == 0)
-			{
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x][currentIndex.y + 1];
-				slidePuzzle[currentIndex.x][currentIndex.y + 1] = tmp;
-			}
-			else if (currentIndex.y == 3)
-			{
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x][currentIndex.y - 1];
-				slidePuzzle[currentIndex.x][currentIndex.y - 1] = tmp;
-			}
-			else {
-				slidePuzzle[currentIndex.x][currentIndex.y] = slidePuzzle[currentIndex.x][currentIndex.y + Random];
-				slidePuzzle[currentIndex.x][currentIndex.y + Random] = tmp;
-			}
-		}*/
-
 		int StartRow = rand() % 4;
 		int StartCol = rand() % 4;
 		int RandomRow = rand() % 4;
@@ -80,51 +42,6 @@ void SliderPuzzle::Suffle()
 		slidePuzzle[RandomRow][RandomCol] = tmp;
 	}
 }
-
-
-
-//bool SliderPuzzle::IsSolvable(int size, int targetIndex) {
-//	int inversions = 0;
-//	int position = 0;
-//	int lineSize = sqrt(size);
-//	for (int i = 0; i < size - 1; i++)
-//		for (int j = i + 1; j < size; j++) {
-//			if (slidePuzzle[j / lineSize][j % lineSize] == targetIndex)
-//			{
-//				position = j + 1;
-//				continue;
-//			}
-//			if (slidePuzzle[i / lineSize][i % lineSize] > slidePuzzle[j / lineSize][j % lineSize])
-//			{
-//				inversions++;
-//			}
-//		}
-//	//cout << "inversions : " << inversions << " lineSize : " << lineSize << " position : " << position << endl;
-//	//Sleep(1000);
-//	return isSlidePuzzleSolvable(inversions, lineSize, position);
-//
-//}
-
-//int SliderPuzzle::GetRowNumberFromBelow(int width, int emptyTilePosition)
-//{
-//	return emptyTilePosition % width;
-//}
-//
-//bool SliderPuzzle::isSlidePuzzleSolvable(int numberOfInversions, int width, int emptyTilePosition)
-//{
-//	if (width % 2 != 0)
-//		return (numberOfInversions % 2 == 0);
-//
-//	int rowNumber = GetRowNumberFromBelow(width, emptyTilePosition);
-//	//cout << "rowNumber : " << rowNumber << endl;
-//	//Sleep(5000);
-//	if (rowNumber % 2 != 0)
-//		return (numberOfInversions % 2 == 0);
-//	else
-//		return (numberOfInversions % 2 != 0);
-//}
-
-
 
 
 void SliderPuzzle::OnGUI() {

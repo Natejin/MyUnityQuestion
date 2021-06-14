@@ -1,0 +1,6 @@
+﻿  GameBoard.cpp
+  PrivateProject_Snake.cpp
+D:\Github\CodeTest\Cpp\Academy_20210602\PrivateProject_Snake\PrivateProject_Snake.cpp(117,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\Github\CodeTest\Cpp\Academy_20210602\PrivateProject_Snake\PrivateProject_Snake.cpp(117,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating Code...
+  PrivateProject_Snake.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\PrivateProject_Snake.exe

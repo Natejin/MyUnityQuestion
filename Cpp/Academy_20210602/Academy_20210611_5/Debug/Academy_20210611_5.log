@@ -1,5 +1,2 @@
-﻿  SliderPuzzle.cpp
-  소스.cpp
-  Generating Code...
-D:\Github\CodeTest\Cpp\Academy_20210602\Academy_20210611_5\Algoritsm.h(34): warning C4715: 'Algoritsm::FindXPosition': not all control paths return a value
-  Academy_20210611_5.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_5_HW.exe
+﻿  Academy_20210611_5.cpp
+  Academy_20210611_5.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210611_5.exe

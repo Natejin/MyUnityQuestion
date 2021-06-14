@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{aa3e7aa3-6c37-41c5-a699-733cafcc9167}</ProjectGuid>
+    <ProjectGuid>{4ba52a5a-5850-4b6c-b4c1-17ad147afb09}</ProjectGuid>
     <RootNamespace>Academy202106115</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Academy_20210611_5_HW</ProjectName>
+    <ProjectName>Academy_20210611_HW_슬라이딩게임</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,9 +140,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Academy_20210611_5.cpp" />
+    <ClCompile Include="Algoritsm.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="SliderPuzzle.cpp" />
-    <ClCompile Include="소스.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algoritsm.h" />

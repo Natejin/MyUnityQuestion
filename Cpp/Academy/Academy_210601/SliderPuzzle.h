@@ -11,29 +11,23 @@ class SliderPuzzle
 {
 private:
 	string name;
-
-	//int slidePuzzle[4][4];
+	Position currentIndex;
 	int count = 0;
 
 public:
 	SliderPuzzle();
 	~SliderPuzzle();
-	Position currentIndex;
 	int slidePuzzle[4][4];
+
 	void RandomNumGen();
 	void OnGUI();
 	void Suffle();
+	void SetPosition(int x, int y);
 	string MoveUp();
 	string MoveDown();
 	string MoveLeft();
 	string MoveRight();
-	void Swap(Position origin, Position target);
+	void Swap(Position& origin, Position target);
 	bool Check();
-
-
-
-	//bool IsSolvable(int size, int targetIndex);
-	//int GetRowNumberFromBelow(int width, int emptyTilePosition);
-	//bool isSlidePuzzleSolvable(int numberOfInversions, int width, int emptyTilePosition);
 };
 

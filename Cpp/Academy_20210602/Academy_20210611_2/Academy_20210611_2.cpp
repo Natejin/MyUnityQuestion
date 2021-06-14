@@ -1,4 +1,5 @@
-﻿// Academy_20210611_2.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿#include "..\Academy_20210614_1\Student.h"
+// Academy_20210611_2.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
@@ -70,7 +71,7 @@ public:
 		cout << a << "," << b << endl;
 	};
 	void print(string str) { cout << str << endl; };
-	Student() { printOn(); };	
+
 	
 	int sum();
 	int sum(int a, int b);

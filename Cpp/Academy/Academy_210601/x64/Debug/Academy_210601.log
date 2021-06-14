@@ -1,1 +1,3 @@
-﻿  Academy_210601.vcxproj -> C:\Mine\CodeTest\Cpp\Academy\x64\Debug\Academy_210601.exe
+﻿  소스.cpp
+D:\Github\CodeTest\Cpp\Academy\Academy_210601\소스.cpp(35,27): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Academy_210601.vcxproj -> D:\Github\CodeTest\Cpp\Academy\x64\Debug\Academy_210601.exe

@@ -11,11 +11,15 @@ SliderPuzzle::~SliderPuzzle() {
 
 }
 
+void SliderPuzzle::SetPosition(int x, int y) {
+	currentIndex = Position(x, y);
+}
+
 void SliderPuzzle::RandomNumGen() {
-	//int size = 4;
 	bool checkNum1[4] = {};
 	int index = 0;
 
+	//currentIndex = Position(0, 0);
 	//번호 생성
 	for (size_t i = 0; i < 4; i++)
 	{
@@ -37,12 +41,14 @@ void SliderPuzzle::Suffle()
 		int RandomRow = rand() % 4;
 		int RandomCol = rand() % 4;
 
+
+
 		int tmp = slidePuzzle[StartRow][StartCol];
 		slidePuzzle[StartRow][StartCol] = slidePuzzle[RandomRow][RandomCol];
 		slidePuzzle[RandomRow][RandomCol] = tmp;
+
 	}
 }
-
 
 void SliderPuzzle::OnGUI() {
 
@@ -60,7 +66,6 @@ void SliderPuzzle::OnGUI() {
 			if (slidePuzzle[i][j] == 0)
 			{
 				cout << " # |";
-				currentIndex = Position(i, j);
 			}
 			else {
 				if (slidePuzzle[i][j] < 10)
@@ -71,11 +76,9 @@ void SliderPuzzle::OnGUI() {
 					cout << slidePuzzle[i][j] << " |";
 				}
 			}
-
 		}
 		cout << endl;
 	}
-
 	cout << "+" << boaderStr << endl;
 }
 
@@ -128,7 +131,7 @@ string SliderPuzzle::MoveRight()
 }
 
 bool SliderPuzzle::Check() {
-	int value = 1;
+	int value =1;
 	for (size_t i = 0; i < 4; i++)
 	{
 		for (size_t j = 0; j < 4; j++)
@@ -142,18 +145,20 @@ bool SliderPuzzle::Check() {
 				}
 				return false;
 			}
-
+			
 			value++;
 		}
 	}
 	return true;
 }
 
-void SliderPuzzle::Swap(Position origin, Position target) {
+void SliderPuzzle::Swap(Position& origin, Position target) {
 
 	int temp = slidePuzzle[origin.x][origin.y];
 	slidePuzzle[origin.x][origin.y] = slidePuzzle[target.x][target.y];
 	slidePuzzle[target.x][target.y] = temp;
+
+	origin = target;
 }
 
 

@@ -11,12 +11,11 @@ enum DIRECT {
 	왼쪽 = 75,
 	오른쪽 = 77,
 };
+
 int main() {
 	SliderPuzzle slide;
 	srand((int)time(NULL));
 	Algoritsm algoritsm;
-	
-
 	bool isSolvable = true;
 	while (isSolvable)
 	{
@@ -27,13 +26,24 @@ int main() {
 		}
 	}
 
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (slide.slidePuzzle[i][j] == 0)
+			{
+				slide.SetPosition(i, j);
+			}
+		}
+	}
+
 	Sleep(1000);
 
 	string textOutput = "";
 	bool isPlaying = true;
 	while (isPlaying)
 	{
-		system("cls");
+		//system("cls");
 		slide.OnGUI();
 		cout << textOutput << endl;
 		cout << "==================================" << endl;

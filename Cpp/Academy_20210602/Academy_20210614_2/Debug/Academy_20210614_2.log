@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Academy_20210614_2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Academy_20210614_2.cpp
+D:\Github\CodeTest\Cpp\Academy_20210602\Academy_20210614_2\Academy_20210614_2.cpp(53,26): warning C4018: '<': signed/unsigned mismatch
+  Academy_20210614_2.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\Debug\Academy_20210614_2 깊은복사, 복사생성자.exe

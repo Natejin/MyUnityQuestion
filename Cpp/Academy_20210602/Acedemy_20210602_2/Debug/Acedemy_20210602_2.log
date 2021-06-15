@@ -1,3 +1,0 @@
-﻿  Acedemy_20210602_2.cpp
-C:\Users\KGA_08\Documents\GitHub\CodeTest\Cpp\Academy_20210602\Acedemy_20210602_2\Acedemy_20210602_2.cpp(49,19): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Acedemy_20210602_2.vcxproj -> C:\Users\KGA_08\Documents\GitHub\CodeTest\Cpp\Academy_20210602\Debug\Acedemy_20210602_2.exe

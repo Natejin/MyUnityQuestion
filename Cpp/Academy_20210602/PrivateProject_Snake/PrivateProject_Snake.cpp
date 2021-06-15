@@ -68,7 +68,7 @@ void clear_screen(void)
 //	DWORD dw;
 //	COORD CursorPosition = { x, y };
 //	SetConsoleCursorPosition(hBuffer[nScreenIndex], CursorPosition);
-//	WriteFile(hBuffer[nScreenIndex], str, strlen(str), &dw, NULL);
+//	WriteFile(+- hBuffer[nScreenIndex], str, strlen(str), &dw, NULL);
 //}
 //
 //void FlippingBuffer()
@@ -130,8 +130,6 @@ int main()
 	int timeCount = 0;
 	int spawnFoodTime;
 
-
-	int key = (int)eAsciiKey::UP;
 	while (true)
 	{
 		Sleep(game.GetSpeed());

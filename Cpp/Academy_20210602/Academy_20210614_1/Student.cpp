@@ -1,3 +1,4 @@
+#include "..\Academy_20210615_2\Student.h"
 #include "Student.h"
 
 Student::Student()
@@ -32,9 +33,6 @@ Student::Student(const int s1, const int s2, const int s3)
 	average = sum / 3;
 }
 
-Student::~Student()
-{
-}
 
 void Student::Print()
 {

@@ -6,7 +6,6 @@ using namespace std;
 void SliderPuzzle::SetPosition(int x, int y) {
 	currentIndex = Position(x, y);
 }
-
 void SliderPuzzle::RandomNumGen() {
 	bool checkNum1[4] = {};
 	int index = 0;

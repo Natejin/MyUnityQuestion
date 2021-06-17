@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Abstract">
+      <UniqueIdentifier>{e649db6a-c159-411a-b35d-4daa1d9a2625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Abstract\헤더 파일">
+      <UniqueIdentifier>{0e768c6c-6d68-4c6e-bf28-4bcaffc40a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Abstract\소스 파일">
+      <UniqueIdentifier>{f329fe2b-f211-44f6-b777-d2f2b8defdc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{2cf1f8e8-4bf4-4d20-b38f-f9bf7bfac50b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\소스 파일">
+      <UniqueIdentifier>{b184ef65-37dd-41ac-8f93-7d9c1851c96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Database\헤더 파일">
+      <UniqueIdentifier>{d443300f-5f15-4167-84be-b44f09eb6512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{5a6af5df-28b7-4dc0-b43d-7cbbff0a9fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\소스 파일">
+      <UniqueIdentifier>{752d34b4-46d2-4525-914c-598d63e47137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\헤더 파일">
+      <UniqueIdentifier>{f99d5c75-73d5-4cea-9526-27e7b771fbce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item System">
+      <UniqueIdentifier>{550e48bd-b2c0-45ca-8b5e-d1d224cfe98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item System\Inventory System">
+      <UniqueIdentifier>{14918e9b-9c69-4a3b-8efe-cb0846129209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item System\Shop System">
+      <UniqueIdentifier>{080da9a4-a33b-4b3c-8872-2924faee616a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item System\Inventory System\헤더 파일">
+      <UniqueIdentifier>{fa69c756-36b7-4e1a-9194-1d80bbe35eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item System\Inventory System\소스 파일">
+      <UniqueIdentifier>{1c614848-a1e5-4516-9a1a-4bd49151d92f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Database_Item.cpp">
+      <Filter>Database\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Equip.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Equip_Weapon.cpp">
+      <Filter>Item\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Equip_Armor.cpp">
+      <Filter>Item\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Material.cpp">
+      <Filter>Item\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Quest.cpp">
+      <Filter>Item\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Consume.cpp">
+      <Filter>Item\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopManager.cpp">
+      <Filter>Item System\Shop System</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Abstract\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Item System\Inventory System\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>Item System\Inventory System\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemObject.cpp">
+      <Filter>Item System\Inventory System\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSlot.cpp">
+      <Filter>Item System\Inventory System\소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enum.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Database_Item.h">
+      <Filter>Database\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Equip.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Equip_Armor.h">
+      <Filter>Item\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Equip_Weapon.h">
+      <Filter>Item\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Quest.h">
+      <Filter>Item\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Consume.h">
+      <Filter>Item\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Material.h">
+      <Filter>Item\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopManager.h">
+      <Filter>Item System\Shop System</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Abstract\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Item System\Inventory System\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>Item System\Inventory System\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemObject.h">
+      <Filter>Item System\Inventory System\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSlot.h">
+      <Filter>Item System\Inventory System\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

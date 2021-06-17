@@ -3,6 +3,7 @@
 #include "SliderPuzzle.h"
 #include "Algoritsm.h"
 #include <conio.h>
+#include <vector>
 
 using namespace std;
 enum DIRECT {
@@ -72,7 +73,7 @@ int main() {
 			isPlaying = false;
 		}
 	}
-
+	
 	system("cls");
 	slide.OnGUI();
 	cout << textOutput << endl;

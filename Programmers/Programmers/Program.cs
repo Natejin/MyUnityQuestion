@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+
+
+
 namespace 프로그래머스
 {
 	public class Solution3

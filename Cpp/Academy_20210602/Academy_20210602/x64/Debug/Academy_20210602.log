@@ -1,4 +1,0 @@
-﻿  Academy_20210602.cpp
-D:\Github\CodeTest\Cpp\Academy_20210602\Academy_20210602\Academy_20210602.cpp(39,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Github\CodeTest\Cpp\Academy_20210602\Academy_20210602\Academy_20210602.cpp(40,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Academy_20210602.vcxproj -> D:\Github\CodeTest\Cpp\Academy_20210602\x64\Debug\Academy_20210602.exe

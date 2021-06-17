@@ -1,7 +1,11 @@
 #include "GameManager.h"
 
-int main() {
-	srand((int)time(NULL));
-	GameManager* gm = new GameManager();
-	gm->GameStart();
+namespace WallNamPong {
+
+
+	int main() {
+		srand((int)time(NULL));
+		GameManager* gm = new GameManager();
+		gm->GameStart();
+	}
 }

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Script">
+      <UniqueIdentifier>{071a0e51-6a40-43c8-841d-d6e1a536da27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System">
+      <UniqueIdentifier>{550e48bd-b2c0-45ca-8b5e-d1d224cfe98e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Inventory System">
+      <UniqueIdentifier>{14918e9b-9c69-4a3b-8efe-cb0846129209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Inventory System\Header Files">
+      <UniqueIdentifier>{fa69c756-36b7-4e1a-9194-1d80bbe35eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Inventory System\Source Files">
+      <UniqueIdentifier>{1c614848-a1e5-4516-9a1a-4bd49151d92f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Shop System">
+      <UniqueIdentifier>{080da9a4-a33b-4b3c-8872-2924faee616a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Equipment System">
+      <UniqueIdentifier>{d299c046-0499-4f74-a167-5c663cdf8987}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Equipment System\Header Files">
+      <UniqueIdentifier>{e14e8299-312d-480a-b8b8-9def20fc9d68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item System\Equipment System\Source Files">
+      <UniqueIdentifier>{dd607765-f20c-4cec-9e6c-1ac7885b18bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item %28나중에 아이템 분류할것!!%29">
+      <UniqueIdentifier>{5a6af5df-28b7-4dc0-b43d-7cbbff0a9fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item %28나중에 아이템 분류할것!!%29\Source Files">
+      <UniqueIdentifier>{752d34b4-46d2-4525-914c-598d63e47137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Item %28나중에 아이템 분류할것!!%29\Header Files">
+      <UniqueIdentifier>{f99d5c75-73d5-4cea-9526-27e7b771fbce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Database">
+      <UniqueIdentifier>{2cf1f8e8-4bf4-4d20-b38f-f9bf7bfac50b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Database\Source Files">
+      <UniqueIdentifier>{b184ef65-37dd-41ac-8f93-7d9c1851c96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Database\Header Files">
+      <UniqueIdentifier>{d443300f-5f15-4167-84be-b44f09eb6512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Abstract">
+      <UniqueIdentifier>{e649db6a-c159-411a-b35d-4daa1d9a2625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Abstract\Source Files">
+      <UniqueIdentifier>{f329fe2b-f211-44f6-b777-d2f2b8defdc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Script\Abstract\Header Files">
+      <UniqueIdentifier>{0e768c6c-6d68-4c6e-bf28-4bcaffc40a61}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Material.cpp">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Quest.cpp">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Consume.cpp">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopManager.cpp">
+      <Filter>Script\Item System\Shop System</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Script\Item System\Inventory System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>Script\Item System\Inventory System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSlot.cpp">
+      <Filter>Script\Item System\Inventory System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitStatus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item_Equip.cpp">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp">
+      <Filter>Script\Abstract\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EquipmentManager.cpp">
+      <Filter>Script\Item System\Equipment System\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DB_Item.cpp">
+      <Filter>Script\Database\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Database.h">
+      <Filter>Script\Abstract\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Script\Abstract\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Quest.h">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Consume.h">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Material.h">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
+      <Filter>Script\Abstract\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopManager.h">
+      <Filter>Script\Item System\Shop System</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Script\Abstract\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Script\Abstract\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Script\Item System\Inventory System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>Script\Item System\Inventory System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSlot.h">
+      <Filter>Script\Item System\Inventory System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitStatus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item_Equip.h">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Script\Item %28나중에 아이템 분류할것!!%29</Filter>
+    </ClInclude>
+    <ClInclude Include="EquipmentManager.h">
+      <Filter>Script\Item System\Equipment System\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DB_Item.h">
+      <Filter>Script\Database\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

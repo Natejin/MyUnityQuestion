@@ -91,10 +91,6 @@ public:
 
 
 int main() {
-
-
-
-
 	cout << endl << endl <<endl<< endl;
 
 	ItemEquipWeapon weapon = ItemEquipWeapon("¹«±â", 2000, ItemType::Equip_Weapon, 20, 22);

@@ -1,9 +1,0 @@
-﻿  CardData.cpp
-  Computer.cpp
-  GameManager.cpp
-  Player.cpp
-  Source.cpp
-  Unit.cpp
-  Generating Code...
-D:\Github\CodeTest\Cpp\CppGame\WallNamPong\GameManager.cpp(124): warning C4715: 'GameManager::DrawCard': not all control paths return a value
-  WallNamPong.vcxproj -> D:\Github\CodeTest\Cpp\CppGame\x64\Debug\WallNamPong.exe

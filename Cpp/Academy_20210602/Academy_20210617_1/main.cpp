@@ -35,12 +35,12 @@ int main() {
 	OutPut(1);
 	OutPut1(1, 1.5);
 
-	Box<int>* box = new Box<int>();
-	box->SetData(100);
+	Box<int>* Slot = new Box<int>();
+	Slot->SetData(100);
 
 	Box<double>* box1 = new Box<double>();
-	box->SetData(3.1415);
+	Slot->SetData(3.1415);
 
-	cout << box->GetData() << endl;
+	cout << Slot->GetData() << endl;
 	cout << box1->GetData() << endl;
 }

@@ -16,6 +16,50 @@ int main() {
 	//자료형에 제약을 받지않고 아무런 자료형의 주소를 저장가능
 
 
+
+
+	int num = 10;
+
+	////int형 포인터 변수
+	//int* pNum = &num;
+
+	////int형 포인터 변수
+	//int** ppNum = &pNum;
+
+	//cout << "num :\t" << num << endl;
+	//cout << "pNum :\t" << pNum << endl;
+	//cout << "ppNum :\t" << ppNum << endl;
+
+
+
+	//int a = 3;
+	//int* pa = &a;
+	//int** ppa = &pa;
+
+	//cout << "a :\t" << a << endl;
+	//cout << "&a :\t" << &a << endl;
+	//cout << "pa :\t" << pa << endl;
+	//cout << "&pa :\t" << &pa << endl;
+	//cout << "*pa :\t" << *pa << endl;
+	//cout << "*ppa :\t" << *ppa << endl;
+	//cout << "&ppa :\t" << &ppa << endl;
+	//cout << "ppa :\t" << ppa << endl;
+	//cout << "**ppa :\t" << **ppa << endl;
+
+
+
+	int a = 10;
+	int* pa = &a;
+
+	int A = 10;
+	void* pA = &A;
+
+	cout << *(int*)pA << endl;
+
+
+
+
+
 	int c = 3;
 	double d = 3.1;
 
@@ -27,9 +71,9 @@ int main() {
 	//*vp = 1; 오류뜸 주소만 저장이가능해서
 	//역참조를 때려도 값을 저장하거나 변경할수없다.
 	//하지만 ....ㅋ
-	int a = 1;
-	int* p = &a;//*p = 3;
-	cout << *p << endl;
+	//int a = 1;
+	//int* p = &a;//*p = 3;
+	//cout << *p << endl;
 
 	//cout <<*vp<<endl; 이건오류남
 	cout << *(int*)vp << endl;//ㅋㅋㅋㅋㅋㅋ 이건됌

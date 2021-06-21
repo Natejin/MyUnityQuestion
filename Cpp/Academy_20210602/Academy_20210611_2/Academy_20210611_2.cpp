@@ -6,6 +6,7 @@
 
 using namespace std;
 
+
 //struct의 default는 private
 struct Circle1 {
 
@@ -77,19 +78,6 @@ public:
 	int sum(int a, int b);
 };
 
-int main()
-{
-	Student s;
-	s.print(1,2);
-	s.print("안녕");
-	cout << s.sum(3, 5) << endl;
-	cout << s.sum() << endl;
-
-	Student* s1 = new Student;
-
-	s1->print(1,2);
-
-}
 
 int Student::sum()
 {
@@ -99,3 +87,95 @@ int Student::sum()
 int Student::sum(int a, int b) {
 	return a + b;
 }
+
+
+//class Parent
+//{
+//public:
+//	void Print() {
+//		cout << "나는 부모" << endl;
+//	}
+//private:
+//	int a;
+//	int b;
+//};
+//
+//class Child : public Parent
+//{ 
+//private:
+//	int c;
+//public:
+//	void AnotherPrint() { 
+//		cout << "나는 자식" << endl;
+//	}
+//};
+//
+//int main() {
+//	Parent parent;
+//	Child child;
+//
+//	child.Print(); //사용가능
+//
+//	parent.AnotherPrint(); //사용불가
+//}
+
+#include <iostream>
+using namespace std;
+
+class Parent {
+private:
+	int a;
+protected:
+	int b;
+public:
+	int c;
+};
+
+class Child : private Parent { //b,c맴버 변수는 private 맴버로 접근 범위 졻혀짐
+
+};
+
+class AnotherChild : protected Parent { //b,c맴버 변수는 public 맴버로 접근 범위 졻혀짐
+
+};
+
+class AnotherAnotherChild : public Parent { //b,c맴버 변수는 public 맴버로 접근 범위 졻혀짐
+
+};
+
+
+int main() {
+	Child child;
+	//a = private, b = private, c = private
+	child.a; //사용불가
+	child.b; //사용불가
+	child.c; //사용불가
+
+	AnotherChild anotherChild;
+	//a = protected, b = protected, c = protected
+	anotherChild.a;	//사용불가
+	anotherChild.b;	//사용불가
+	anotherChild.c;	//사용불가
+
+	AnotherAnotherChild anotherAnotherChild;
+	//a = public, b = public, c = public
+	anotherAnotherChild.a;	//사용불가
+	anotherAnotherChild.b;	//사용불가
+	anotherAnotherChild.c;	//사용가능
+}
+
+
+//
+//int main()
+//{
+//	Student s;
+//	s.print(1, 2);
+//	s.print("안녕");
+//	cout << s.sum(3, 5) << endl;
+//	cout << s.sum() << endl;
+//
+//	Student* s1 = new Student;
+//
+//	s1->print(1, 2);
+//
+//}

@@ -1,254 +1,314 @@
-// WinAPI32.cpp : Defines the entry point for the application.
-//
+#pragma comment(lib, "winmm.lib")
 
-#include "framework.h"
-#include "WinAPI32.h"
-#include <windowsx.h>
-#include <iostream>
 
+#include<Windows.h>
+#include <string>
+#include <windef.h>
+#include <stdint.h>
+#include <vector>
 using namespace std;
 
-#define MAX_LOADSTRING 100
+// 운영체제
+HINSTANCE m_hInstance;
 
-// Global Variables:
-HINSTANCE hInst;                                // current instance
-WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
-WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
-HBRUSH hbr1, hbr2;
-HICON hIcon1, hIcon2;
+// 윈도우 핸들러
+HWND m_hWnd;
 
-// Forward declarations of functions included in this code module:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
-LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+// 좌상단의 타이틀 텍스트
+LPTSTR m_lpszClass = TEXT("안녕");
+int oh = 0;
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+
+// 콜백함수
+LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+void DrawAppleLogo(HDC& hdc, const HWND& hWnd, PAINTSTRUCT& ps);
+
+// 인스턴스 핸들 이전 인스턴스 핸들, 명령으로 이루어진 , 프로그램이 시작될 행동
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+    LPSTR lpszCmdParam, int nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+    m_hInstance = hInstance;
 
-    // TODO: Place code here.
+    //윈도우창의 구조를 저장하는 클래스
+    WNDCLASS wndClass;
 
-    // Initialize global strings
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_WINAPI32, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+    //윈도우에서 사용하는 데이터단위를 바이트로 지정
+    wndClass.cbClsExtra = 0;
 
-    // Perform application initialization:
-    if (!InitInstance (hInstance, nCmdShow))
+    //개별메모리에서 사용하는 여분의 메모리
+    wndClass.cbWndExtra = 0;
+
+    //윈도우 작업영역에 칠한 배경 브러쉬
+    wndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+
+    //커서 지정
+    wndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
+
+    //타이틀바의 좌상단 아이콘, 최소화 아이콘
+    wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+
+    // 응용프로그램의 인스턴스 핸들러
+    wndClass.hInstance = hInstance;
+
+    // 메세지 처리하는 함수
+    wndClass.lpfnWndProc = (WNDPROC)WndProc;
+
+    //등록하고자하는 윈도우스 이름
+    wndClass.lpszClassName = m_lpszClass;
+
+    //윈도우 클래스 지정
+    wndClass.lpszMenuName = NULL;
+
+    // 윈도우 스타일 지정
+    wndClass.style = CS_HREDRAW | CS_VREDRAW;
+
+    // 윈도우 클래스 지정
+    RegisterClass(&wndClass);
+
+
+
+
+    m_hWnd = CreateWindow(m_lpszClass, m_lpszClass, WS_OVERLAPPEDWINDOW,
+        100, 100, 1024, 768, NULL, NULL, hInstance, NULL);
+
+    ShowWindow(m_hWnd, nCmdShow);
+
+    // 운영체제에서 발생하는 메세지 정보를 저장하기 위한 구조체
+    MSG message;
+
+    //GetMessage: 대기상태
+    while (GetMessage(&message, 0, 0, 0))
     {
-        return FALSE;
+        // 키보드 입력 메세지 처리담당
+        TranslateMessage(&message);
+        // 원도우 프로시져에 전달된 메세지를 실제 윈도우에 전달
+        DispatchMessage(&message);
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINAPI32));
-
-    MSG msg;
-
-    // Main message loop:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
-
-    return (int) msg.wParam;
+    return message.wParam;
 }
 
+static RECT rcHead = { 25,25,50,50 };
+int dir[4] = { 0, 0, 1, 1 };
+vector<RECT> rc;
+//메세지 번호, 키보드 조합키,  마우스 관련
+//원도우 프로시져 : 메세지를 운영체제에 전달한다. 강제로 운영체제가 호출
+//hWnd : 윈도우가 발생한 메세지인지 구분
+//imessage : 메세지 구분 번호
+
+//wParam : 마우스 버튼의 상태, 키보드 조합키의 상태를 전달한다.
+//iParam : 마우스 클릭좌표 상태를 전달한다.
 
 
-//
-//  FUNCTION: MyRegisterClass()
-//
-//  PURPOSE: Registers the window class.
-//
-ATOM MyRegisterClass(HINSTANCE hInstance)
+
+LRESULT CALLBACK WndProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
-    WNDCLASSEXW wcex;
+    //DC : device context ->출력에 관한 옵션을 디폴트로 설정
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+    //DC 를 사용하기 위해 HDC, DC의 핸들 이용
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINAPI32));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WINAPI32);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+    //GDI 모듈에 의해 관리
 
-    return RegisterClassExW(&wcex);
-}
+    //GDI 화면 처리와 그래픽 출력을 한다.
 
-//
-//   FUNCTION: InitInstance(HINSTANCE, int)
-//
-//   PURPOSE: Saves instance handle and creates main window
-//
-//   COMMENTS:
-//
-//        In this function, we save the instance handle in a global variable and
-//        create and display the main program window.
-//
-BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
-{
-   hInst = hInstance; // Store instance handle in our global variable
+    //HDC 출력에 필요한 정보를 가지는 데이터 구조체 (좌표,굵기 색등등 필요한 모든정보를 가지고 있다)
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+    // 출력에 관한 정보를 갖는 데이터의 구조체 좌표 굵기 색 등
+    //HDC hdc;
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+    //PAINTSTRUCT : 윈도우 클라이언트 영역을 그리기 위한 정보를 저장한 구조체
+ /*   PAINTSTRUCT ps;*/
 
-   return TRUE;
-}
 
-//
-//  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  PURPOSE: Processes messages for the main window.
-//
-//  WM_COMMAND  - process the application menu
-//  WM_PAINT    - Paint the main window
-//  WM_DESTROY  - post a quit message and return
-//
-//
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    HDC hdc;
-
-    static BOOL ELLIPSE = FALSE;
-    static HWND b2, c1;
-    static BOOL MYSELLECT = FALSE;
+    
     PAINTSTRUCT ps;
+    HDC hdc;
+    float speed = 1;
+    static int time = 0;
+    char* szTime[128];
+    static float m_fStartTime = 0;
+    float NowTime = 0;
 
-    switch (message)
+    //루프 
+    
+    //int StartTick
+   
+    //rc.top += speed * 1;
+    //rc.bottom += speed * 1;
+    switch (iMessage)
     {
+        // 윈도우 만들어질때 한번 호출되는 메세지
     case WM_CREATE:
-    {
-        hbr1 = CreateSolidBrush(RGB(255, 0, 0));
-        hbr2 = CreateSolidBrush(RGB(0, 0, 255));
+        //시작부분
+        //m_fStartTime = (float)timeGetTime() * 0.001f;   //초단위로 바꿔줌
+        SetTimer(hWnd, 0, 1000, NULL);
 
-        // load player icons
-        hIcon1 = LoadIcon(hInst, MAKEINTRESOURCE(IDI_CROSS));
-        hIcon2 = LoadIcon(hInst, MAKEINTRESOURCE(IDI_CIRCLE));
 
-        CreateWindow(TEXT("button"), TEXT("Click Me"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-            20, 20, 100, 25, hWnd, (HMENU)0, hInst, NULL);
-        b2 = CreateWindow(TEXT("button"), TEXT("TextOut"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-            20, 50, 100, 25, hWnd, (HMENU)1, hInst, NULL);
-    }
-    break;
-    case WM_COMMAND:
+        break;
+    case WM_TIMER:
+        time++;
+       //NowTime = (float)timeGetTime() * 0.001f;    //초단위로 바꿔줌
+
+       // if (NowTime - m_fStartTime >= 0.01f)   // 여기서 0.1 은 0.1초마다 실행을 의미
+       // {
+
+       //     if (rcHead.left + speed * dir[1] > 0 &&
+       //         rcHead.right + speed * dir[0] < 500 &&
+       //         rcHead.top + speed * dir[2] > 0 &&
+       //         rcHead.bottom + speed * dir[3] < 500)
+       //     {
+       //         rcHead.left += speed * dir[1];
+       //         rcHead.right += speed * dir[0];
+       //         rcHead.top += speed * dir[2];
+       //         rcHead.bottom += speed * dir[3];
+       //     }
+       // }
+
+       // m_fStartTime = NowTime;
+        InvalidateRect(hWnd, NULL, true);
+        break;
+    case WM_KEYDOWN:
+
+        switch (wParam)
         {
-            int wmId = LOWORD(wParam);
-            // Parse the menu selections:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
+        case VK_RIGHT:
+            dir[0] = 1;
+            dir[1] = 1;
+            dir[2] = 0;
+            dir[3] = 0;
+            break;
+        case VK_LEFT:
+            dir[0] = -1;
+            dir[1] = -1;
+            dir[2] = 0;
+            dir[3] = 0;
+            break;
+        case VK_DOWN:
+            dir[2] = 1;
+            dir[3] = 1;
+            dir[1] = 0;
+            dir[0] = 0;
+            break;
+        case VK_UP:
+            dir[2] = -1;
+            dir[3] = -1;
+            dir[1] = 0;
+            dir[0] = 0;
+            break;
+        case VK_RETURN:
+
+            break;
+        default:
+            break;
         }
         break;
-    case WM_LBUTTONDOWN: 
-    {
-        int xPos = GET_X_LPARAM(lParam);
-        int yPos = GET_Y_LPARAM(lParam);
+    case WM_PAINT: // 그림그리는 곳
+        ////DrawAppleLogo(hdc, hWnd, ps);
+        hdc = BeginPaint(hWnd, &ps);
+        //sprintf(szTime, "%d 초 지났습니다.", time);
 
-        int ret = MessageBox(hWnd, L"Are you sure u want to start a new game?", L"New Game", MB_YESNO | MB_ICONQUESTION);
-        if (IDYES == ret)
-        {
-            //// reset and start new game
-            //playerTurn = 1;
-            //winner = 0;
-            //ZeroMemory(gameBoard, sizeof(gameBoard));
+        //TextOut(hdc, 100, 100, szTime, strlen(szTime));
 
-            //// force a paint message
-            //InvalidateRect(hWnd, NULL, TRUE);	// post WM_PAINT to our WindowsProc. it gets queued in our msg queue
-            //UpdateWindow(hWnd);					// forces immediate handling of WM_PAINT
-        }
-    }
-        
+        //Rectangle(hdc, rcHead.left, rcHead.top, rcHead.right, rcHead.bottom);
+        EndPaint(hWnd, &ps);
+
+
         break;
-    case WM_PAINT:
-        {
-        int xPos = GET_X_LPARAM(lParam);
-        int yPos = GET_Y_LPARAM(lParam);
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
+        // 왼쪽 마우스 클릭시
+    case WM_LBUTTONDOWN:
 
-        //int myIntValue = 20;
-        wchar_t num_charX[10];
-
-        swprintf_s(num_charX, L"%d", xPos);
-
-
-        //wstring name(L"Steve Nash");
-        //const wchar_t* szName = name.c_str();
+        rcHead.left += 50;
 
 
 
-
-        //const WCHAR szPlayer1[] = L"반동분자";
-
-        TextOutW(hdc, 16, 16, num_charX, ARRAYSIZE(num_charX));
-            // TODO: Add any drawing code that uses hdc here...
-            EndPaint(hWnd, &ps);
-        }
         break;
-
-    case WM_DESTROY:
-        DeleteObject(hbr1);
-        DeleteObject(hbr2);
-
-        DestroyIcon(hIcon1);
-        DestroyIcon(hIcon2);
-
+    case WM_DESTROY: // 윈도우 종료시 
+        KillTimer(hWnd, 1);
 
         PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        return 0;
     }
-    return 0;
+    return (DefWindowProc(hWnd, iMessage, wParam, lParam));
 }
 
-// Message handler for about box.
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+
+
+
+
+
+void DrawAppleLogo(HDC& hdc, const HWND& hWnd, PAINTSTRUCT& ps)
 {
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
+    HBRUSH brush, oBrush;
 
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
+
+    POINT pt = { 100,100 };
+    POINT pline1[14] = {
+100,170,
+380,170,
+377,178,
+374,186,
+371,194,
+368,202,
+365,210,
+362,218,
+88,218,
+90,210,
+92,202,
+94,194,
+96,186,
+98,178
+    };
+    Polygon(hdc, pline1, 14);
+    brush = CreateSolidBrush(RGB(255, 255, 0));
+    oBrush = (HBRUSH)SelectObject(hdc, brush);
+    SelectObject(hdc, oBrush);
+    DeleteObject(brush);
+
+
+
+    ////텍스트
+    //TextOut(hdc, 300, 500, L"야이자식아!!", lstrlen(L"야이자식아!!"));
+
+    //색깔
+    //SetTextColor(hdc, RGB(255, 0, 0));
+    //TextOut(hdc, 100, 100, L"뭔데 이것아!!", lstrlen(L"뭔데 이것아!!"));
+
+    EndPaint(hWnd, &ps);
 }
+
+//
+//
+//
+//void UpdateFPS()
+//{
+//
+//    static DWORD frameCount = 0;            //프레임 카운트수
+//    static float timeElapsed = 0.0f;            //흐른 시간
+//    static DWORD lastTime = timeGetTime();   //마지막 시간(temp변수)
+//
+//    DWORD curTime = timeGetTime();      //현재 시간
+//    float timeDelta = (curTime - lastTime) * 0.001f;        //timeDelta(1번생성후 흐른 시간) 1초단위로 바꿔준다.
+//
+//    timeElapsed += timeDelta;
+//
+//    frameCount++;
+//
+//    if (timeElapsed >= 1.0f)         //흐른시간이 1초이상이면 내가 하고싶은것 처리
+//    {
+//        float fps = (float)frameCount / timeElapsed;
+//        sprintf_s(pFPS, sizeof(pFPS), TEXT("게임속도 FPS: %f"), fps);     //FPS출력 하는 소스
+//
+//        frameCount = 0;
+//        timeElapsed = 0.0f;
+//    }
+//    else
+//    {
+//        //흐른 시간이 1초가 안되면 생략함  
+//        //Sleep() 해도되고 안해도 되구~ 
+//    }
+//
+//
+//    lastTime = curTime;
+//}

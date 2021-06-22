@@ -24,6 +24,7 @@
     <ProjectGuid>{8c97fa45-8acc-451b-8af6-efc22c7c6e4c}</ProjectGuid>
     <RootNamespace>Academy20210621</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Academy_20210621 인벤 시스템 실험</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

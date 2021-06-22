@@ -126,7 +126,8 @@ int main() {
 	inventory1.push_back(armor1);
 	inventory1.push_back(consume1);
 
-
+	ItemConsume* item11 = (ItemConsume*)inventory1.at(2)->GetComponent();
+	cout << "테스트 : " << item11->GetAmount() << endl;;
 	cout << "================" << endl;
 	for (size_t i = 0; i < inventory1.size(); i++)
 	{
@@ -148,19 +149,19 @@ int main() {
 			break;
 		case ItemType::Equip_Armor: 
 			{
-				ItemEquipArmor* item = (ItemEquipArmor*)inventory1.at(0)->GetComponent();
-				cout << item << endl;
-				cout << &item << endl;
-				cout << item->GetWeight() << endl;
-				cout << item->GetArmor() << endl;
+				ItemEquipArmor* item = (ItemEquipArmor*)inventory1.at(1)->GetComponent();
+				cout << "방어구 포인터 :\t" << item << endl;
+				cout << "포인터의 주소 :\t" << &item << endl;
+				cout << "무게   :\t" << item->GetWeight() << endl;
+				cout << "방어력 :\t" << item->GetArmor() << endl;
 			}
 			break;
 		case ItemType::Consume:
 			{
-				ItemConsume* item = (ItemConsume*)inventory1.at(0)->GetComponent();
-				cout << item << endl;
-				cout << &item << endl;
-				cout << item->GetAmount() << endl;
+				ItemConsume* item = (ItemConsume*)inventory1.at(2)->GetComponent();
+				cout << "소모품 포인터 :\t" << item << endl;
+				cout << "포인터의 주소 :\t" << &item << endl;
+				cout << "수량 :\t" << item->GetAmount() << endl;
 			}
 			break;
 		default:

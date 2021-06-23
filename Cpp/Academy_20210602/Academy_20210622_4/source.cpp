@@ -1,6 +1,14 @@
+
+
+//win32에서 제공되는 다양한 기능이 들어있음
 #include <Windows.h>
 
+//프로젝트 맨밑 -> 속성
+// C/C++ ->언어 -> 준수모드 -> 아니요.
 
+//시스템 창모드 설정방법.
+//프로젝트 맨밑 -> 속성
+//링커 -> 시스템 -> 하위시스템 ->창
 
 
 
@@ -16,7 +24,8 @@ LPTSTR m_lpszClass = TEXT("열렸다 참깨");
 // 콜백함수
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
-
+//WinMain : Console의 main 같이 win32의 진입하는 함수이다
+//HINSTANCE : 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     LPSTR lpszCmdParam, int nCmdShow)
 {
@@ -40,11 +49,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     //타이틀바의 좌상단 아이콘, 최소화 아이콘
     wndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 
-    // 응용프로그램의 인스턴스 핸들러
+
     wndClass.lpfnWndProc = (WNDPROC)WndProc;
 
-    // 메세지 처리하는 함수
-    wndClass.lpfnWndProc = (WNDPROC)WndProc;
+
 
     //등록하고자하는 윈도우스 이름
     wndClass.lpszClassName = m_lpszClass;
@@ -107,8 +115,21 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 
 
-//wndProc 행동
+//윈도우 프로시저 : 메시지를 운영체제에 전달한다. 강제로 운영체제가 호출.
+//hWnd : 윈도우가 발생한 메세지인지 구분.
+//imessage : 메세지 구분번호
+//wParam : 마우스 버튼의 상태. 키보드 조합키의 상태를 전달한다.
+//lParam : 마우스 클릭 좌표를 전달.
 LRESULT CALLBACK WndProc(HWND m_hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam) {
+
+//DC : 출력에 관한 옵션을 디폴트로 설정.
+//DC를 사용하기 위해 HDC, DC의 핸들이용.
+//GDI 모듈에 의해 관리
+//GFDI 화명 처리아 그래픽 출력을 한다.
+//HDC : 출력에 필요한 정보를 가지는 데이터 구조체
+//좌표, 굵기, 색 등등 출력에 필요한 모든 정보를 담고 있다.
+//PAINTSTRUCT : 윈도우의 클라이언트 영억을 그리기 위한 정보를 담은 구조체.
+
 
     //GDI 화면출력과 그래픽 담당
     //HDC 출력에 필요한 정보를 가지는 구조체 (좌표, 굵기 ,컬러 등)
@@ -117,7 +138,7 @@ LRESULT CALLBACK WndProc(HWND m_hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
     //윈도우 클라이언트 영역을 그리기 위한 구조체
     PAINTSTRUCT ps;
 
-
+    TCHAR str[128];
 
 
     static BOOL ELLIPSE = FALSE;

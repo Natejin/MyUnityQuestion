@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9b563c3a-1584-4475-9b8a-ac7ced17b90f}</ProjectGuid>
+    <ProjectGuid>{99bfca41-42d6-4620-ba51-dbfa424de14a}</ProjectGuid>
     <RootNamespace>WinAPI2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>WinAPI_2 충돌게임 (점프 중력 마찰력구현)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,11 +141,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scale.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="WinAPI_2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Position.cpp" />
+    <ClCompile Include="Scale.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WinAPI_2.cpp" />
   </ItemGroup>
   <ItemGroup>

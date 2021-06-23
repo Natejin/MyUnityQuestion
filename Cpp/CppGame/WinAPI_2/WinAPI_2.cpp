@@ -1,182 +1,392 @@
-ï»¿// WinAPI_2.cpp : ì• í”Œë¦¬ì¼€ì´ì…˜ì— ëŒ€í•œ ì§„ì…ì ì„ ì •ì˜í•©ë‹ˆë‹¤.
+// WinAPI_2.cpp : Defines the entry point for the application.
 //
 
 #include "framework.h"
 #include "WinAPI_2.h"
+#include <vector>
+
+using namespace std;
 
 #define MAX_LOADSTRING 100
 
-// ì „ì—­ ë³€ìˆ˜:
-HINSTANCE hInst;                                // í˜„ì¬ ì¸ìŠ¤í„´ìŠ¤ì…ë‹ˆë‹¤.
-WCHAR szTitle[MAX_LOADSTRING];                  // ì œëª© í‘œì‹œì¤„ í…ìŠ¤íŠ¸ì…ë‹ˆë‹¤.
-WCHAR szWindowClass[MAX_LOADSTRING];            // ê¸°ë³¸ ì°½ í´ë˜ìŠ¤ ì´ë¦„ì…ë‹ˆë‹¤.
+// Global Variables:
+HINSTANCE hInst; // current instance
 
-// ì´ ì½”ë“œ ëª¨ë“ˆì— í¬í•¨ëœ í•¨ìˆ˜ì˜ ì„ ì–¸ì„ ì „ë‹¬í•©ë‹ˆë‹¤:
+//WCHAR À¯´ÏÄÚµå±â¹İ 2¹ÙÀÌÆ® ¹®ÀÚ
+WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
+WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+
+// Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+//WinMain : ConsoleÀÇ main °°ÀÌ win32ÀÇ ÁøÀÔÇÏ´Â ÇÔ¼öÀÌ´Ù
+//HINSTANCE : ¿î¿µÃ¼Á¦°¡ ½ÇÇàµÇ´ÂÇÁ·Î±×·¥¸¶´Ù ½Äº°µÇ´Â ½Äº°¹æ¹ı (°Çµé¸®Áö¸»ÀÚ ¿î¿µÃ¼Á¦°¡ ¸Ş¸ğ¸®¿¡ ¿Ã¶ó¿Â À©µµ¿ì¸¦ °ü¸®ÇÏ´Â¿ëµµ)
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR    lpCmdLine,
+	_In_ int       nCmdShow)
 {
-    UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // TODO: ì—¬ê¸°ì— ì½”ë“œë¥¼ ì…ë ¥í•©ë‹ˆë‹¤.
+	// TODO: Place code here.
 
-    // ì „ì—­ ë¬¸ìì—´ì„ ì´ˆê¸°í™”í•©ë‹ˆë‹¤.
-    LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-    LoadStringW(hInstance, IDC_WINAPI2, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+	// Initialize global strings (°ÔÀÌ¸ÓµéÀº Àß¾È¾´´Ù.)
+	// loadString : °ÔÀÌ¸ÓµéÀº Àß¾È¾´´Ù. ,¹®ÀÚ¿­ °ü·ÃÀÓ
+	// szTitle : À©µµ¿ìÃ¢ÀÇ Á¦¸ñÀ» ÁöÁ¤ 
+	LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
+	LoadStringW(hInstance, IDC_WINAPI2, szWindowClass, MAX_LOADSTRING);
+	MyRegisterClass(hInstance);
 
-    // ì• í”Œë¦¬ì¼€ì´ì…˜ ì´ˆê¸°í™”ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤:
-    if (!InitInstance (hInstance, nCmdShow))
-    {
-        return FALSE;
-    }
+	// Perform application initialization:
+	if (!InitInstance(hInstance, nCmdShow))
+	{
+		return FALSE;
+	}
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINAPI2));
+	//´ÜÃàÅ° ÁöÁ¤ÇÑ°É °¡Áö°í¿È  ¹«½ÃÇÏ¼À ¤»
+	HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINAPI2));
 
-    MSG msg;
+	//ÀÌº¥Æ®¿¡ µû¸¥ ºÎ°¡ÀûÀÎ Á¤º¸
+	MSG msg;
 
-    // ê¸°ë³¸ ë©”ì‹œì§€ ë£¨í”„ì…ë‹ˆë‹¤:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
+	// Main message loop:
+	while (GetMessage(&msg, nullptr, 0, 0))
+	{
+		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+	}
 
-    return (int) msg.wParam;
+	return (int)msg.wParam;
 }
 
 
 
 //
-//  í•¨ìˆ˜: MyRegisterClass()
+//  FUNCTION: MyRegisterClass()
 //
-//  ìš©ë„: ì°½ í´ë˜ìŠ¤ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤.
+//  PURPOSE: Registers the window class.
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+	//À©µµ¿ìÃ¢ÀÇ ±¸Á¶¸¦ ÀúÀåÇÏ´Â Å¬·¡½º
+	WNDCLASSEXW wcex;
 
-    szWindowClass = "g2";
+	wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.cbSize = sizeof(WNDCLASSEX);
+	//À©µµ¿ì Ã¢¸ğ¾çÀ» ¿øÇÏ´Â´ë·Î ¾²±â
+	//HREDRAW °¡·Î°¡ º¯ÇÒ°æ¿ì ´Ù½Ã±×¸°´Ù.
+	//VREDRAW ¼¼·Î°¡ º¯ÇÒ°æ¿ì ´Ù½Ã±×¸°´Ù.
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
 
-    wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
-    wcex.cbClsExtra     = 0;
-    wcex.cbWndExtra     = 0;
-    wcex.hInstance      = hInstance;
-    wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINAPI2));
-    wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WINAPI2);
-    wcex.lpszClassName  = szWindowClass;
-    wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+	//ÀÌº¥Æ®¸¦ ¸Ş¼¼Áö·Î ¸¸µé¾î¼­ ¸Ş¼¼ÁöÅ¥¿¡ ³Ö´Â´Ù.
+	//ÀÌº¥Æ® ¼ø¼­´ë·Î ³Ö¾îµÎ¸é ÀĞÀ»¶§ ¼ø¼­´ë·Î ²¨³»¾î¼­ ÀĞ´Â´Ù.
+	//¸Ş¼¼Áö¿¡ µû¸¥ »ç¿ëÀÚ Á¤ÀÇ¸¦ ¸¸µå´Â °ø°£
+	// ÀÀ¿ëÇÁ·Î±×·¥ÀÇ ÀÎ½ºÅÏ½º ÇÚµé·¯
+	// ¸Ş¼¼Áö Ã³¸®ÇÏ´Â ÇÔ¼ö
+	// ÇÔ¼öÆ÷ÀÎÅÍÀÓ
+	wcex.lpfnWndProc = WndProc;
+	//À©µµ¿ì¿¡¼­ »ç¿ëÇÏ´Â µ¥ÀÌÅÍ´ÜÀ§¸¦ ¹ÙÀÌÆ®·Î ÁöÁ¤
+	wcex.cbClsExtra = 0;
+	//°³º°¸Ş¸ğ¸®¿¡¼­ »ç¿ëÇÏ´Â ¿©ºĞÀÇ ¸Ş¸ğ¸®
+	wcex.cbWndExtra = 0;
 
-    return RegisterClassExW(&wcex);
+	wcex.hInstance = hInstance;
+	//Å¸ÀÌÆ²¹ÙÀÇ ÁÂ»ó´Ü ¾ÆÀÌÄÜ, ÃÖ¼ÒÈ­ ¾ÆÀÌÄÜ
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINAPI2));
+	//Ä¿¼­ ÁöÁ¤
+	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+
+	//À©µµ¿ì ÀÛ¾÷¿µ¿ª¿¡ Ä¥ÇÑ ¹è°æ ºê·¯½¬
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+
+	//¸Ş´ºÁöÁ¤ ¾È¾µ°Å¸é NULL·Î ÁöÁ¤
+	wcex.lpszMenuName = NULL;
+
+	//µî·ÏÇÏ°íÀÚÇÏ´Â À©µµ¿ì½º ÀÌ¸§
+	wcex.lpszClassName = szWindowClass;
+
+	//Å¸ÀÌÆ²¹ÙÀÇ ÁÂ»ó´Ü ¾ÆÀÌÄÜ, ÃÖ¼ÒÈ­ ¾ÆÀÌÄÜ
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+	return RegisterClassExW(&wcex);
 }
 
 //
-//   í•¨ìˆ˜: InitInstance(HINSTANCE, int)
+//   FUNCTION: InitInstance(HINSTANCE, int)
 //
-//   ìš©ë„: ì¸ìŠ¤í„´ìŠ¤ í•¸ë“¤ì„ ì €ì¥í•˜ê³  ì£¼ ì°½ì„ ë§Œë“­ë‹ˆë‹¤.
+//   PURPOSE: Saves instance handle and creates main window
 //
-//   ì£¼ì„:
+//   COMMENTS:
 //
-//        ì´ í•¨ìˆ˜ë¥¼ í†µí•´ ì¸ìŠ¤í„´ìŠ¤ í•¸ë“¤ì„ ì „ì—­ ë³€ìˆ˜ì— ì €ì¥í•˜ê³ 
-//        ì£¼ í”„ë¡œê·¸ë¨ ì°½ì„ ë§Œë“  ë‹¤ìŒ í‘œì‹œí•©ë‹ˆë‹¤.
+//        In this function, we save the instance handle in a global variable and
+//        create and display the main program window.
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // ì¸ìŠ¤í„´ìŠ¤ í•¸ë“¤ì„ ì „ì—­ ë³€ìˆ˜ì— ì €ì¥í•©ë‹ˆë‹¤.
+	hInst = hInstance; // Store instance handle in our global variable
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+	//À©µµ¿ì¸¦ ¸¸µë
+	//WS_OVERLAPPEDWINDOW : ºñÆ®¿¬»êÀÚ·Î ÇÊ¿äÇÑ°Ô ÀÖÀ½
+	 //#define WS_OVERLAPPEDWINDOW (WS_OVERLAPPED     | \
+     //                             WS_CAPTION        | \
+     //                             WS_SYSMENU        | \
+     //                             WS_THICKFRAME     | \
+     //                             WS_MINIMIZEBOX    | \
+     //                             WS_MAXIMIZEBOX)
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
 
-   return TRUE;
+	//WS_SYSMENU Å¸ÀÌÆ² Å¬¸¯½Ã ¸Ş´ºÃ¢ÀÌ ³ª¿È
+	//WS_THICKFRAME Ã¢Å©±â¸¦ Á¶Àı
+	//WS_MINIMIZEBOX ÃÖ¼ÒÈ­
+	//WS_MAXIMIZEBOX ÃÖ´ëÈ­
+
+	//Å¬¶óÀÌ¾ğÆ® ¿µ¿ª : Å¸ÀÌÆ²À» Á¦¿ÜÇÑ ºÎºĞ
+
+	//CW_USEDEFAULT ÁÂ»ó´Ü 0,0
+	HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+
+	if (!hWnd)
+	{
+		return FALSE;
+	}
+
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
+
+	return TRUE;
 }
 
+
+
+
+int dir[4] = { 0, 0, 1, 1 };
+vector<RECT> rc;
+
 //
-//  í•¨ìˆ˜: WndProc(HWND, UINT, WPARAM, LPARAM)
+//  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  ìš©ë„: ì£¼ ì°½ì˜ ë©”ì‹œì§€ë¥¼ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+//  PURPOSE: Processes messages for the main window.
 //
-//  WM_COMMAND  - ì• í”Œë¦¬ì¼€ì´ì…˜ ë©”ë‰´ë¥¼ ì²˜ë¦¬í•©ë‹ˆë‹¤.
-//  WM_PAINT    - ì£¼ ì°½ì„ ê·¸ë¦½ë‹ˆë‹¤.
-//  WM_DESTROY  - ì¢…ë£Œ ë©”ì‹œì§€ë¥¼ ê²Œì‹œí•˜ê³  ë°˜í™˜í•©ë‹ˆë‹¤.
+//  WM_COMMAND  - process the application menu
+//  WM_PAINT    - Paint the main window
+//  WM_DESTROY  - post a quit message and return
 //
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    switch (message)
-    {
-    case WM_COMMAND:
-        {
-            int wmId = LOWORD(wParam);
-            // ë©”ë‰´ ì„ íƒì„ êµ¬ë¬¸ ë¶„ì„í•©ë‹ˆë‹¤:
-            switch (wmId)
-            {
-            case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
-            case IDM_EXIT:
-                DestroyWindow(hWnd);
-                break;
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
-            }
-        }
-        break;
-    case WM_PAINT:
-        {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: ì—¬ê¸°ì— hdcë¥¼ ì‚¬ìš©í•˜ëŠ” ê·¸ë¦¬ê¸° ì½”ë“œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤...
-            EndPaint(hWnd, &ps);
-        }
-        break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
+	static RECT rcHead = { 25,25,50,50 };
+	//left, bottom, right, top
+	static RECT ground = { 100,500,1000,1000 };
+	/* PAINTSTRUCT ps;
+	 HDC hdc;*/
+	float speed = 10;
+	static int time = 0;
+	char* szTime[128];
+	static double m_fStartTime = 0;
+	static double NowTime = 0;
+
+
+	static double gravity = 0.9;
+	static double forceVerticalMax = 9;
+
+
+	static float forceVertical = 0;
+	static double forceJump = 20;
+	static WCHAR szTitle1[MAX_LOADSTRING];
+	static bool onGround = false;
+	static double moveSpeed = 0;
+
+	static double forceFriction = 0.2;
+	static double maxSpeed = 10;
+	static double acceleration = 7;
+	static LPCWSTR lastKeyInput = TEXT("¸¶Áö¸·À¸·Î ÀÔ·Â ¹ŞÀº Å° : ¾øÀ½");
+	switch (message)
+	{
+	case WM_CREATE:
+		SetTimer(hWnd, 0, 10, NULL);
+		break;
+	case WM_TIMER:
+		//forceVertical
+		if (forceVertical - gravity >= -forceVerticalMax)
+		{
+			forceVertical -= gravity;
+		}
+		else {
+			forceVertical = -forceVerticalMax;
+		}
+
+		if (rcHead.bottom - forceVertical < ground.top ||
+			rcHead.left > ground.right ||
+			rcHead.right < ground.left)
+		{
+			rcHead.top -= forceVertical;
+			rcHead.bottom -= forceVertical;
+			onGround = false;
+		}
+		else {
+			onGround = true;
+		}
+
+		//Áö»ó¿¡ ÀÖÀ»½Ã ¸¶Âû·Â  ÀÛ¿ë
+		if (onGround)
+		{
+			//°¡¼Ó·ÂÀÌ ÁÂÃøÀÏ½Ã ¹İ´ë¹æÇâÀ¸·Î ¸¶Âû·Â
+			if (moveSpeed > 0)
+			{
+				if (moveSpeed - forceFriction <= 0)
+				{
+					moveSpeed = 0;
+				}
+				else {
+					moveSpeed -= forceFriction;
+				}
+			}
+			//°¡¼Ó·ÂÀÌ ¿ìÃøÀÏ½Ã ¹İ´ë¹æÇâÀ¸·Î ¸¶Âû·Â
+			else if (moveSpeed < 0) {
+				if (moveSpeed - forceFriction >= 0)
+				{
+					moveSpeed = 0;
+				}
+				else {
+					moveSpeed += forceFriction;
+				}
+			}
+			//°¡¼Ó·ÂÀÌ 0ÀÏ½Ã ¾Æ¹«Áşµµ ¾ÈÇÔ
+			else {
+
+			}
+		}
+		//°øÁß¿¡¼­´Â ¸¶Âû·Â ¾øÀ½
+		else {
+
+		}
+
+
+		//È¾ ÀÌµ¿
+		rcHead.left += moveSpeed;
+		rcHead.right += moveSpeed;
+
+		InvalidateRect(hWnd, NULL, true);
+		break;
+	case WM_KEYDOWN:
+		switch (wParam)
+		{
+		case VK_RIGHT:
+			lastKeyInput = TEXT("¸¶Áö¸·À¸·Î ÀÔ·Â ¹ŞÀº Å° : ¿ìÃø ¹æÇâÅ°");
+			if (moveSpeed + acceleration < maxSpeed)
+			{
+				moveSpeed += acceleration;
+			}
+			else {
+				moveSpeed = maxSpeed;
+			}
+			break;
+		case VK_LEFT:
+			lastKeyInput = TEXT("¸¶Áö¸·À¸·Î ÀÔ·Â ¹ŞÀº Å° : ÁÂÃø ¹æÇâÅ°");
+			if (moveSpeed - acceleration > -maxSpeed)
+			{
+				moveSpeed -= acceleration;
+			}
+			else {
+				moveSpeed = -maxSpeed;
+			}
+			break;
+		case VK_DOWN:
+			break;
+		case VK_UP:
+			break;
+			//Á¡ÇÁ
+		case VK_SPACE:
+			lastKeyInput = TEXT("¸¶Áö¸·À¸·Î ÀÔ·Â ¹ŞÀº Å° : ½ºÆäÀÌ½º¹Ù");
+			if (onGround)
+			{
+				forceVertical = forceJump;
+			}
+			break;
+		default:
+			break;
+		}
+		break;
+	//¹«¾ğ°¡ ±×¸±¶§
+	case WM_PAINT:
+	{
+		PAINTSTRUCT ps;
+		HDC hdc = BeginPaint(hWnd, &ps);
+		LPCWSTR text1 = onGround ? TEXT("Áö»ó¿¡ ÀÖ´Ù") : TEXT("°øÁß¿¡ ÀÖ´Ù");
+		wsprintf(szTitle1, text1);
+		TextOut(hdc, 500, 200, szTitle1, lstrlen(szTitle1));
+
+		wsprintf(szTitle1, lastKeyInput);
+		TextOut(hdc, 500, 230, szTitle1, lstrlen(szTitle1));
+
+
+		wsprintf(szTitle1, TEXT("force(x,y) : (%d.%d, %d.%d)"), (int)forceVertical, (int)(forceVertical * 100) % 100, (int)moveSpeed, (int)(moveSpeed * 100) % 100);
+		TextOut(hdc, 500, 260, szTitle1, lstrlen(szTitle1));
+
+		wsprintf(szTitle1, TEXT("gravity : %d.%d"), (int)gravity, (int)(gravity * 100) % 100);
+		TextOut(hdc, 500, 290, szTitle1, lstrlen(szTitle1));
+
+		wsprintf(szTitle1, TEXT("test : %d"), -1);
+		TextOut(hdc, 500, 320, szTitle1, lstrlen(szTitle1));
+		//szTime = "Áö»ó¿¡¼± ¸¶Âû·ÂÀÌ Á¸ÀçÇÏ±â¶§¹®¿¡ ¼Óµµ°¡ °¨¼ÒÇÏÁö¸¸\n";
+		wsprintf(szTitle1, TEXT("Áö»ó¿¡¼± ¸¶Âû·ÂÀÌ Á¸ÀçÇÏ±â¶§¹®¿¡ ¼Óµµ°¡ °¨¼ÒÇÏÁö¸¸\n°øÁß¿¡¼­´Â ¼Óµµ°¡ °¨¼ÒÇÏÁö¾Ê´Â´Ù."));
+		TextOut(hdc, 500, 340, szTitle1, lstrlen(szTitle1));
+
+		wsprintf(szTitle1, TEXT("ÁÂ¿ìÃø ¹æÇâÅ°·Î ÀÌµ¿ÀÌ °¡´ÉÇÏ°í ¶¥À§¿¡¼­¸¸ Á¡ÇÁ°¡ °¡´ÉÇÔ (½ºÆäÀÌ½º¹Ù ÀÔ·Â)."));
+		TextOut(hdc, 500, 380, szTitle1, lstrlen(szTitle1));
+
+		wsprintf(szTitle1, TEXT("½ÃÀÛÇÏÀÚ¸¶ÀÚ ¶³¾îÁö´Ï±ñ ¹æÇâÅ°·Î ¶¥À§¿¡ ÂøÁöÇÕ½Ã´Ù."));
+		TextOut(hdc, 500, 410, szTitle1, lstrlen(szTitle1));
+
+		Rectangle(hdc, rcHead.left, rcHead.top, rcHead.right, rcHead.bottom);
+		Rectangle(hdc, ground.left, ground.top, ground.right, ground.bottom);
+
+		wsprintf(szTitle1, TEXT("¿©±â´Â ¶¥ÀÌ´Ù ³Í ¸øÁö³ª °£´Ù."));
+		TextOut(hdc, 450, 950, szTitle1, lstrlen(szTitle1));
+		// TODO: Add any drawing code that uses hdc here...
+		EndPaint(hWnd, &ps);
+	}
+	break;
+
+	//À©µµ¿ì°¡ Á¾·áµÉ¶§
+	case WM_DESTROY:
+		KillTimer(hWnd, 1);
+		//À©µµ¿ì Ã¢ ³¡³»±â
+		PostQuitMessage(0);
+		break;
+	default:
+		//
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
 }
 
-// ì •ë³´ ëŒ€í™” ìƒìì˜ ë©”ì‹œì§€ ì²˜ë¦¬ê¸°ì…ë‹ˆë‹¤.
+// Message handler for about box.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG:
+		return (INT_PTR)TRUE;
 
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
+	case WM_COMMAND:
+		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		break;
+	}
+	return (INT_PTR)FALSE;
 }

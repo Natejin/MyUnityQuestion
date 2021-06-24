@@ -125,97 +125,180 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    static TCHAR strMouse[64] = {};
+    static RECT rc = { 25,25,50,50 };
+    static bool mouseInRect = false;
+    static vector<Rect*> rects;
+    static Rect* rcCurrent;
+
+    static int posX = 0;
+    static int posY = 0;
+    static HPEN pen, pen1;
+
+
     switch (message)
     {
-    case WM_PAINT:
+    case WM_CREATE:
+        SetTimer(hWnd, 0, 10, NULL);
+        mousePoint = MouseDragArea();
+
+        break;
+    case WM_TIMER:
+
+
+        break;
+
+    case WM_LBUTTONDOWN:
+        if (mousePoint.isButtonUpBoth())
         {
-            PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-            // TODO: Add any drawing code that uses hdc here...
 
+            mousePoint.ptStart.x = mousePoint.ptEnd.x = LOWORD(lParam);
+            mousePoint.ptStart.y = mousePoint.ptEnd.y = HIWORD(lParam);
+            rcCurrent = new Rect(mousePoint);
+            mousePoint.mouseDownLeft = true;
 
-			//유니코드 문자열은 "" 앞에 L을 붙여서 L""로 해줄 수 있다.
-			//아니면 TEXT 매크로를 이용한다.
-			TextOut(hdc, 50, 50, TEXT("win32"), 5);
-			TCHAR strMouse[64] = {};
-			//wsprintf : 유니코드 문자열을 만들어주는 함수이다.
-			//%d에는 정수가 대입된다.
-			//lstrlen : 유니코드 문자열이 길이를 구해준다.
-            if (tagArea.mouseDown)
+            InvalidateRect(hWnd, NULL, true);
+        }
+        break;
+    case WM_MOUSEMOVE:
+        mousePoint.ptEnd.x = LOWORD(lParam);
+        mousePoint.ptEnd.y = HIWORD(lParam);
+        if (mousePoint.mouseDownLeft)
+        {
+            rcCurrent->CreatingRect(mousePoint);
+        }
+        else if (mousePoint.mouseDownRight)
+        {
+            if (rcCurrent != nullptr)
             {
-                Rectangle(hdc, tagArea.ptStart.x, tagArea.ptStart.y, tagArea.ptEnd.x, tagArea.ptEnd.y);
+                rcCurrent->TranslateTo(mousePoint);
             }
-			wsprintf(strMouse, TEXT("x : %d y: %d"), tagArea.ptStart.x, tagArea.ptStart.y);
-			TextOut(hdc, 600, 30, strMouse, lstrlen(strMouse));
 
-            wsprintf(strMouse, TEXT("x : %d y: %d"), tagArea.ptEnd.x, tagArea.ptEnd.y);
+        }
+        InvalidateRect(hWnd, NULL, true);
+        break;
+    case WM_LBUTTONUP:
+        if (mousePoint.mouseDownLeft)
+        {
+            mousePoint.mouseDownLeft = false;
+            rcCurrent->CreatedRect(mousePoint);
+            rects.push_back(rcCurrent);
+            InvalidateRect(hWnd, NULL, true);
+        }
+        break;
+    case WM_RBUTTONDOWN:
+
+        if (mousePoint.isButtonUpBoth())
+        {
+            for (size_t i = 0; i < rects.size(); i++)
+            {
+                if (PtInRect(rects[i]->rect, mousePoint.ptEnd))
+                {
+                    rcCurrent = rects[i];
+                    int lastIndex = rects.size() - 1;
+                    if (i != lastIndex)
+                    {
+                        auto temp = rects[lastIndex];
+                        rects[lastIndex] = rects[i];
+                        rects[i] = temp;
+
+                    }
+                    rcCurrent->TranslateBegin(mousePoint);
+                    InvalidateRect(hWnd, NULL, true);
+                    break;
+                }
+            }
+            mousePoint.mouseDownRight = true;
+            InvalidateRect(hWnd, NULL, true);
+        }
+        break;
+    case WM_RBUTTONUP:
+        if (mousePoint.mouseDownRight)
+        {
+            rcCurrent = nullptr;
+            mousePoint.mouseDownRight = false;
+
+            InvalidateRect(hWnd, NULL, true);
+        }
+        break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        //pen = CreateSolidBrush((RGB(0, 200, 0)));
+
+        for (size_t i = 0; i < rects.size(); i++)
+        {
+
+            Rectangle(hdc, rects[i]->rect->left, rects[i]->rect->top, rects[i]->rect->right, rects[i]->rect->bottom);
+            if (rects[i]->rect->left <= mousePoint.ptEnd.x && mousePoint.ptEnd.x <= rects[i]->rect->right
+                && rects[i]->rect->top <= mousePoint.ptEnd.y && mousePoint.ptEnd.y <= rects[i]->rect->bottom)
+            {
+
+                wsprintf(strMouse, TEXT("안에 있다 상자 : %d"), i + 1);
+                TextOut(hdc, (rects[i]->rect->left + rects[i]->rect->right) * 0.5,
+                    (rects[i]->rect->top + rects[i]->rect->bottom) * 0.5, strMouse, lstrlen(strMouse));
+            }
+        }
+
+        Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
+
+        if (mousePoint.mouseDownLeft)
+        {
+            Rectangle(hdc, rcCurrent->rect->left, rcCurrent->rect->top, rcCurrent->rect->right, rcCurrent->rect->bottom);
+        }
+
+        if (rcCurrent != nullptr)
+        {
+            wsprintf(strMouse, TEXT("Previous x : %d y: %d"), rcCurrent->previousPos.x, rcCurrent->previousPos.y);
+            TextOut(hdc, 600, 30, strMouse, lstrlen(strMouse));
+
+            wsprintf(strMouse, TEXT("x : %d y: %d"), rcCurrent->x, rcCurrent->y);
             TextOut(hdc, 600, 60, strMouse, lstrlen(strMouse));
 
-            //사각형 그리기 : Left, Top Right bottom 점을 잡아서 사각형을 그려준다.
-            Rectangle(hdc, 100, 100, 200, 200);
-
-            //원그리기
-            Ellipse(hdc, 100, 100, 200, 200);
-
-            //시작점 설정
-            MoveToEx(hdc, 300, 100, NULL);
-
-            //선그리기
-            LineTo(hdc, 400, 150);
-
-			//시작점은 400,150에서 시작한다.
-			LineTo(hdc, 700, 200);
-			LineTo(hdc, 350, 400);
-
-			EndPaint(hWnd, &ps);
-	}
-		break;
-	//마우스 위치는 IParam 에 들어오게 되는데 16비트로 쪼개서 x,y 값이
-	//32비트 변수에 들어오게 된다.
-	//LoWoRD, HIWORD 매크로를 이용해서 하위 상위 16비트의 값을 얻어올수있다.
-	case WM_LBUTTONDOWN:
-        if (!tagArea.mouseDown)
-        {
-            tagArea.mouseDown = true;
-            tagArea.ptStart.x = tagArea.ptEnd.x = lParam & 0x0000ffff;
-            tagArea.ptStart.y = tagArea.ptEnd.y = lParam >> 16;
-            //InvalidateRect함수는 강제로 WM_PAINT 메세지를
-            //호출해주는 함수이다.
-            //1번 인자는 윈도우 핸들이 들어간다.
-            //2번 인자는 갱신할 영역이 들어가는데
-            //NULL을 넣어줄 경우 전체 화면을 대상으로 초기화 한다.
-            //3번인자는 TRUE일경우 현재화면을 지우고 갱신한다.
-            //FALSE일경우 현재화면을 지우고 갱신.
-            InvalidateRect(hWnd, NULL, true);
-        }
-		break;
-    case WM_MOUSEMOVE:
-        if (tagArea.mouseDown)
-        {
-            tagArea.ptStart.x = lParam & 0x0000ffff;
-            tagArea.ptStart.y = lParam >> 16;
-            InvalidateRect(hWnd, NULL, true);
-        }
-        break;
-	case WM_LBUTTONUP:
-        if (tagArea.mouseDown)
-        {
-            tagArea.mouseDown = false;
-            tagArea.ptEnd.x = lParam & 0x0000ffff;
-            tagArea.ptEnd.y = lParam >> 16;
-            InvalidateRect(hWnd, NULL, true);
         }
 
-        break;
-    //키가 눌러졌을떄 들어오는 메세지이다.
+        wsprintf(strMouse, TEXT("mouse x : %d y: %d"), mousePoint.ptStart.x, mousePoint.ptStart.y);
+        TextOut(hdc, 600, 90, strMouse, lstrlen(strMouse));
+
+
+
+        if (rc.left <= mousePoint.ptEnd.x && mousePoint.ptEnd.x <= rc.right
+            && rc.top <= mousePoint.ptEnd.y && mousePoint.ptEnd.y <= rc.bottom)
+        {
+            wsprintf(strMouse, TEXT("안에 있다 상자"));
+            TextOut(hdc, 500, 100, strMouse, lstrlen(strMouse));
+        }
+        //wsprintf(strMouse, TEXT("x : %d y: %d"), tagArea.ptEnd.x, tagArea.ptEnd.y);
+        //TextOut(hdc, 600, 60, strMouse, lstrlen(strMouse));
+        // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
+        EndPaint(hWnd, &ps);
+    }
+    break;
+
     case WM_KEYDOWN:
-        
+
         switch (wParam)
         {
+        case VK_RIGHT:
+
+
+            break;
+        case VK_LEFT:
+
+            break;
+        case VK_RETURN:
+            for (size_t i = 0; i < rects.size(); i++)
+            {
+                delete rects[i];
+            }
+            rects.clear();
+            break;
         case VK_ESCAPE:
             DestroyWindow(hWnd);
             break;
         }
+        InvalidateRect(hWnd, NULL, true);
         break;
     case WM_DESTROY:
         PostQuitMessage(0);

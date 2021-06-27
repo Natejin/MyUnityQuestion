@@ -6,7 +6,7 @@
 int main()
 {
 
-	MainGame mg;
+	MainGameMaster mg;
 	mg.Update();
 }
    

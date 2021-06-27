@@ -1,6 +1,6 @@
 #include "MainGame.h"
 
-MainGame::MainGame()
+MainGameMaster::MainGameMaster()
 {
     mother = new Mother();
     mother->Funciton1();
@@ -14,7 +14,7 @@ MainGame::MainGame()
     mother->Funciton3();
 }
 
-MainGame::~MainGame()
+MainGameMaster::~MainGameMaster()
 {
     
 

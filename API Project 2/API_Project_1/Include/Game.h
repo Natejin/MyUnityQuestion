@@ -1,0 +1,22 @@
+//#pragma once
+#include <Windows.h>
+
+//////////////////////////////////////////
+//				STL						//
+//////////////////////////////////////////
+
+#include <vector>
+#include <unordered_map>
+#include <list>
+
+using namespace std;
+
+//////////////////////////////////////////
+//			Custom Header				//
+//////////////////////////////////////////
+
+#include "resource.h"
+#include "Macro.h"
+#include "Flag.h"
+#include "Types.h"
+

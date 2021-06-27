@@ -3,12 +3,12 @@
 #include "Child.h"
 
 
-class MainGame
+class MainGameMaster
 {
 public:
 	Mother* mother;
 	//Mother* mother;
-	MainGame();
-	~MainGame();
+	MainGameMaster();
+	~MainGameMaster();
 };
 

@@ -24,11 +24,11 @@
 
 using namespace std;
 
-struct Vector2 {
+struct Vector2Int {
     int x;
     int y;
 
-    Vector2(int x, int y) :x(x), y(y) {};
+    Vector2Int(int x, int y) :x(x), y(y) {};
 };
 
 struct MouseDragArea {
@@ -49,7 +49,7 @@ struct Rect {
     int y = 0;
     int width = 0;
     int height = 0;
-    Vector2 previousPos = Vector2(0, 0);
+    Vector2Int previousPos = Vector2Int(0, 0);
     Rect(MouseDragArea startPos)
 
     {
@@ -59,7 +59,7 @@ struct Rect {
         rect->right = startPos.ptStart.x;
         rect->bottom = startPos.ptStart.y;
 
-        previousPos = Vector2(0, 0);
+        previousPos = Vector2Int(0, 0);
 
     }
 
@@ -97,9 +97,6 @@ struct Rect {
         x = position.ptEnd.x - previousPos.x;
         y = position.ptEnd.y - previousPos.y;
     }
-
-
-
 };
 
 

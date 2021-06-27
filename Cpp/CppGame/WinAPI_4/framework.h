@@ -21,24 +21,84 @@
 
 #include <vector>
 
-static bool corrision;
-static HDC hdc;
-static HBRUSH brush, oBrush;
+
+
+
 
 using namespace std;
 
-struct Vector2 {
+
+
+// 각종 구조체
+
+#pragma region 벡터
+struct Vector2Int {
     int x;
     int y;
 
-    Vector2() { x = 0; y = 0; }
-    Vector2(int x, int y) :x(x), y(y) {};
+    Vector2Int() { x = 0; y = 0; }
+    Vector2Int(int x, int y) :x(x), y(y) {};
     void SetPos(int _x, int _y) {
         x = _x;
         y = _y;
     }
+
+    bool operator !=(const Vector2Int& Other) const
+    {
+        return (x != Other.x || y != Other.y);
+    }
+
+    bool operator ==(const Vector2Int& Other) const
+    {
+        return (x == Other.x && y == Other.y);
+    }
+
+
+    Vector2Int operator +(const Vector2Int& Other) const
+    {
+        return Vector2Int(x + Other.x, y + Other.y);
+    }
+
+    Vector2Int operator -(const Vector2Int& Other) const
+    {
+        return Vector2Int(x - Other.x, y - Other.y);
+    }
 };
 
+struct Vector2 {
+    float x;
+    float y;
+
+    Vector2() { x = 0; y = 0; }
+    Vector2(float x, float y) :x(x), y(y) {};
+    void SetPos(float _x, float _y) {
+        x = _x;
+        y = _y;
+    }
+    bool operator !=(const Vector2Int& Other) const
+    {
+        return (x != Other.x || y != Other.y);
+    }
+
+    bool operator ==(const Vector2Int& Other) const
+    {
+        return (x == Other.x && y == Other.y);
+    }
+
+
+    Vector2Int operator +(const Vector2Int& Other) const
+    {
+        return Vector2Int(x + Other.x, y + Other.y);
+    }
+
+    Vector2Int operator -(const Vector2Int& Other) const
+    {
+        return Vector2Int(x - Other.x, y - Other.y);
+    }
+};
+#pragma endregion
+
+#pragma region 마우스 구조체
 struct MouseDragArea {
     bool mouseDownLeft = false;
     bool mouseDownRight = false;
@@ -50,14 +110,16 @@ struct MouseDragArea {
     }
 
 };
+#pragma endregion
 
+#pragma region 도형 구조체
 struct Rect {
     RECT* rect;
     int x = 0;
     int y = 0;
     int width = 0;
     int height = 0;
-    Vector2 previousPos = Vector2(0, 0);
+    Vector2Int previousPos = Vector2Int(0, 0);
     Rect(MouseDragArea startPos)
 
     {
@@ -66,7 +128,7 @@ struct Rect {
         rect->top = startPos.ptStart.y;
         rect->right = startPos.ptStart.x;
         rect->bottom = startPos.ptStart.y;
-        previousPos = Vector2(0, 0);
+        previousPos = Vector2Int(0, 0);
     }
 
     Rect(int posX, int posY, int _width, int _height)
@@ -108,18 +170,18 @@ struct Rect {
     }
 
     void  COffsetRect(int _x, int _y) {
-       rect->left += _x;
-       rect->right += _x;
-       rect->top += _y;
-       rect->bottom += _y;
+        rect->left += _x;
+        rect->right += _x;
+        rect->top += _y;
+        rect->bottom += _y;
 
         x += _x;
         y += _y;
 
 
-    }    
+    }
 
-    void  COffsetRect(Vector2 vector) {
+    void  COffsetRect(Vector2Int vector) {
         rect->left += vector.x;
         rect->right += vector.x;
         rect->top += vector.y;
@@ -136,15 +198,7 @@ struct Rect {
         return IntersectRect(&temp, this->rect, another->rect);
     }
 
-    bool PredictIntersectRect(RECT& _temp, Rect* another, Vector2 pos) {
 
-		RECT* temp = new RECT();
-		temp->left = another->rect->left - pos.x;
-		temp->right = another->rect->right - pos.x;
-		temp->top = another->rect->top - pos.y;
-		temp->bottom = another->rect->bottom - pos.y;
-		return IntersectRect(&_temp, rect, temp);
-    }
 
 
 
@@ -159,18 +213,25 @@ struct Rect {
         y = position.ptEnd.y - previousPos.y;
     }
 
-    void TranslateTo(Vector2 position) {
+    void TranslateTo(Vector2Int position) {
 
 
-        rect->left = position.x  - width;
-        rect->top = position.y  - height;
-        rect->right = position.x  + width;
-        rect->bottom = position.y  + height;
-        x = position.x ;
-        y = position.y ;
+        rect->left = position.x - width;
+        rect->top = position.y - height;
+        rect->right = position.x + width;
+        rect->bottom = position.y + height;
+        x = position.x;
+        y = position.y;
     }
 
 };
+#pragma endregion
+
+
+MouseDragArea mousePoint;
+static bool corrision;
+static HDC hdc;
+static HBRUSH brush, oBrush;
 
 
 inline void RectangleMakeCenter(HDC hdc, Rect* rect)
@@ -178,9 +239,9 @@ inline void RectangleMakeCenter(HDC hdc, Rect* rect)
     Rectangle(hdc, rect->x - rect->width, rect->y - rect->height, rect->x + rect->width, rect->y + rect->height);
 }
 
+// 각종 클래스
 
-MouseDragArea mousePoint;
-
+#pragma region  특수목적용 사각형 클래스 
 class SquareObject {
 protected:
     SquareObject() {};
@@ -188,7 +249,7 @@ public:
     Rect* outsideRect;
 
     SquareObject(int posX, int posY, int _width, int _height) {
-        outsideRect = new Rect(posX,posY,_width, _height);
+        outsideRect = new Rect(posX, posY, _width, _height);
     }
     ~SquareObject() {
         delete outsideRect;
@@ -196,20 +257,24 @@ public:
 
     void RectangleMakeCenter(HDC hdc)
     {
-        
+
         Rectangle(hdc, outsideRect->x - outsideRect->width, outsideRect->y - outsideRect->height, outsideRect->x + outsideRect->width, outsideRect->y + outsideRect->height);
     }
 };
 
-class SquareController : public SquareObject{
+class SquareController : public SquareObject {
+private:
+    Rect* dummyRect;
 protected:
     SquareController() {};
 public:
     Rect* insideRect;
 
-    SquareController(int posX, int posY, int _width, int _height) 
+
+    SquareController(int posX, int posY, int _width, int _height)
         : SquareObject(posX, posY, _width, _height)
     {
+        dummyRect = new Rect(posX, posY, _width * 0.5, _height * 0.5);
         insideRect = new Rect(posX, posY, _width * 0.5, _height * 0.5);
     }
 
@@ -217,26 +282,11 @@ public:
         delete insideRect;
     }
 
-    bool CheckCollision(RECT& temp, SquareObject* anotherObject, Vector2 pos) {
-        if (outsideRect->PredictIntersectRect(temp, anotherObject->outsideRect, pos))
-        {
-            auto temp = anotherObject->outsideRect;
-            anotherObject->outsideRect = outsideRect;
-            outsideRect = temp;
-            insideRect->TranslateTo(Vector2( outsideRect->x, outsideRect->y));
-            corrision = true;
 
-           
-            return true;
-        }
-        else {
-            corrision = false;
-            return false;
-        }
-    }
 
-    void Translate(Vector2 direction) {
+    void Translate(Vector2Int direction) {
         outsideRect->COffsetRect(direction);
+        dummyRect->COffsetRect(direction);
         if (direction.x > 0)
         {
             if (insideRect->rect->left < outsideRect->rect->left)
@@ -262,7 +312,7 @@ public:
                 insideRect->COffsetRect(direction);
             }
         }
-       
+
     }
 
     void RectangleMakeCenter(HDC hdc)
@@ -271,7 +321,17 @@ public:
         oBrush = (HBRUSH)SelectObject(hdc, brush);
         Rectangle(hdc, outsideRect->x - outsideRect->width, outsideRect->y - outsideRect->height, outsideRect->x + outsideRect->width, outsideRect->y + outsideRect->height);
         Rectangle(hdc, insideRect->x - insideRect->width, insideRect->y - insideRect->height, insideRect->x + insideRect->width, insideRect->y + insideRect->height);
-       
+
     }
 
 };
+#pragma endregion
+
+
+
+
+
+
+
+
+

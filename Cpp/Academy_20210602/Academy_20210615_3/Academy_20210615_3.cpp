@@ -52,6 +52,6 @@ int main()
     //컴파일 단계에서 모든 마인딩 호출이 완료 
     //컴파일하는동안 대상이 결정되서 속도가 빠르다.
     
-    MainGame maingame;
+    MainGameMaster maingame;
     
 }

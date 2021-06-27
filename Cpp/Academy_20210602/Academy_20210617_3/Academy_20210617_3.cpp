@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
    
-	MainGame mainGame;
+	MainGameMaster mainGame;
 
 }
 

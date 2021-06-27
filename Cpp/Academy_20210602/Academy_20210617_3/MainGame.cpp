@@ -1,7 +1,7 @@
 #include "MainGame.h"
 
 
-MainGame::MainGame() {
+MainGameMaster::MainGameMaster() {
 	for (int i = 0; i < 10; i++) {
 		vNumber.push_back(i + 1);
 	}
@@ -26,18 +26,18 @@ MainGame::MainGame() {
 
 }
 
-MainGame::~MainGame() {
+MainGameMaster::~MainGameMaster() {
 
 }
 
-void MainGame::OutputVNum() {
+void MainGameMaster::OutputVNum() {
 	for (int i = 0; i < vNumber.size(); i++)
 	{
 		cout << vNumber[i] << endl;
 	}
 }
 
-void MainGame::OutputVINum() {
+void MainGameMaster::OutputVINum() {
 	for (viNumber = vNumber.begin(); viNumber != vNumber.end(); ++viNumber)
 	{
 		cout << *viNumber << endl;

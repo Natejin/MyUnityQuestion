@@ -1,21 +1,34 @@
+#include "..\Academy_20210625\MainGame.h"
+#include "..\Academy_20210625\MainGame.h"
+#include "..\Academy_20210625\MainGame.h"
+#include "..\Academy_20210625\MainGame.h"
 #include "MainGame.h"
 
 using namespace std;
 
-MainGame::MainGame() :key(0)
+MainGameMaster::MainGameMaster() :key(0)
 {
     enemy = new Enemy(100);
     player = new Player(100);
 }
 
-MainGame::~MainGame()
+MainGameMaster::~MainGameMaster()
 {
     delete enemy;
     delete player;
 
 }
 
-void MainGame::Update()
+HRESULT MainGameMaster::Init()
+{
+    return E_NOTIMPL;
+}
+
+void MainGameMaster::Release()
+{
+}
+
+void MainGameMaster::Update()
 {
     cout << "플레이어 체력 : " << player->GetHP() << endl;
     cout << "고블린 체력 : " << enemy->GetHP() << endl;
@@ -44,4 +57,13 @@ void MainGame::Update()
         }
 
     }
+}
+
+void MainGameMaster::Render(HDC hdc)
+{
+}
+
+LRESULT MainGameMaster::MainProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    return LRESULT();
 }

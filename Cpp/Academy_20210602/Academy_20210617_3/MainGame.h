@@ -5,7 +5,7 @@
 using namespace std;
 
 
-class MainGame
+class MainGameMaster
 {
 private:
 	//정수형 벡터선언
@@ -16,8 +16,8 @@ private:
 	vector<int>::iterator viNumber;
 
 public:
-	MainGame();
-	~MainGame();
+	MainGameMaster();
+	~MainGameMaster();
 	void OutputVNum();
 	void OutputVINum();
 };

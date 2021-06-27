@@ -3,7 +3,7 @@
 #include"Enemy.h"
 #include"Player.h"
 
-class MainGame
+class MainGameMaster
 {
 private:
     Enemy* enemy;
@@ -11,8 +11,8 @@ private:
     int key;
 
 public:
-    MainGame();
-    ~MainGame();
+    MainGameMaster();
+    ~MainGameMaster();
 
     void Update();
 };

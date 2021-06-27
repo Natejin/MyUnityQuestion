@@ -200,10 +200,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static double forceVerticalMax = 9;
 
 
+
+	static WCHAR szTitle1[MAX_LOADSTRING];
+
+
+	static bool onGround = false;
 	static float forceVertical = 0;
 	static double forceJump = 20;
-	static WCHAR szTitle1[MAX_LOADSTRING];
-	static bool onGround = false;
+
+
 	static double moveSpeed = 0;
 
 	static double forceFriction = 0.2;

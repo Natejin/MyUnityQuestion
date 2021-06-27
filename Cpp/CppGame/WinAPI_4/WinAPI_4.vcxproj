@@ -24,6 +24,7 @@
     <ProjectGuid>{04a0757a-133b-424e-b478-b96569502fe1}</ProjectGuid>
     <RootNamespace>WinAPI4</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>WinAPI_4 충돌시 조작권 이동</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -1,6 +1,7 @@
 #pragma once
 #include "Obj.h"
 
+
 class MonoBehavior : public Obj
 {
 public:
@@ -20,5 +21,11 @@ public:
 	{
 	
 	};
+
+
+
+	void DrawRect(HDC hdc);
+	bool CheckCollision(MonoBehavior t2);
 };
+
 

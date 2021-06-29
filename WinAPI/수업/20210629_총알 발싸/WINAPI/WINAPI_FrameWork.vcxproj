@@ -24,7 +24,7 @@
     <ProjectGuid>{f8f43d66-2944-4448-95c4-4a048d3261bf}</ProjectGuid>
     <RootNamespace>APIFrameWork</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>WINAPI_카드뒤집기</ProjectName>
+    <ProjectName>WINAPI_Academy</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -184,6 +184,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="UsefulFunction.cpp" />
     <ClCompile Include="WINAPI_FrameWork.cpp" />
   </ItemGroup>
   <ItemGroup>

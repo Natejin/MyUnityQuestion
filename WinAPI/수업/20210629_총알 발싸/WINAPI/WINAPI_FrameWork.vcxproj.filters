@@ -182,6 +182,9 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>02.MainGame</Filter>
     </ClCompile>
+    <ClCompile Include="UsefulFunction.cpp">
+      <Filter>01.Core\04.Function</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="WINAPI_FrameWork.rc">

@@ -1,8 +1,6 @@
 #pragma once
-#include<iostream>
-#include<vector>
-#include<map>
-#include<list>
+#include "framework.h"
+#
 
 //			===============================================
 //			||	commonMacroFunction[함수 만든곳]		     ||
@@ -49,5 +47,13 @@ inline void ElllipseMakeCenter(HDC hdc, int x, int y, int width, int height){
 }
 
 //			===============================================
+//			||	     commonMakeStruct[구조체 만든곳]       ||
+//			===============================================
+
+
+
+
+//			===============================================
 //			||	     commonMakeClass[클래스 만든곳]       ||
 //			===============================================
+

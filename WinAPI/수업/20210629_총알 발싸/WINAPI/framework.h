@@ -13,11 +13,16 @@
 #include <memory.h>
 #include <tchar.h>
 
+
+#include<iostream>
 using namespace std;
 //==========================================
 //					STL
 //==========================================
 #include <vector>
+#include<vector>
+#include<map>
+#include<list>
 
 
 //==========================================
@@ -26,7 +31,9 @@ using namespace std;
 #include "commonMacroFunction.h"
 #include "Input.h"
 #include "RandomFunction.h"
+
 #include "Obj.h"
+
 
 //==========================================
 //				    Manager
@@ -45,37 +52,38 @@ using namespace std;
 //==========================================
 //				    Struct
 //==========================================
+
 struct Color
 {
-	Color(int r, int g, int b) :r(r), g(g), b(b) {};
-	Color() :r(0), g(0), b(0) {};
-	~Color() {};
-	int r, g, b;
+    Color(int r, int g, int b) :r(r), g(g), b(b) {};
+    Color() :r(0), g(0), b(0) {};
+    ~Color() {};
+    int r, g, b;
 
-	void Random() {
-		r = RND->GetInt(256);
-		g = RND->GetInt(256);
-		b = RND->GetInt(256);
-	}
+    void Random() {
+        r = RND->GetInt(256);
+        g = RND->GetInt(256);
+        b = RND->GetInt(256);
+    }
 
-	Color GetColor(COLOR color) {
-		switch (color)
-		{
-		case COLOR::RED:
-			r = 255;
-			g = 0;
-			b = 0;
-			break;
-		default:
-			break;
-		}
-		return *this;
-	}
+    Color GetColor(COLOR color) {
+        switch (color)
+        {
+        case COLOR::RED:
+            r = 255;
+            g = 0;
+            b = 0;
+            break;
+        default:
+            break;
+        }
+        return *this;
+    }
 };
 
 struct Vector2
 {
-	double x, y;
+    double x, y;
 
     Vector2() { x = 0; y = 0; }
     Vector2(double x, double y) :x(x), y(y) {};
@@ -133,7 +141,6 @@ struct Vector2
 
 
 #include "UsefulFunction.h"
-
 //==========================================
 //				 매크로 설정
 //==========================================

@@ -1,1 +1,1 @@
-D:\Github\CodeTest\WinAPI\수업\20210629_총알 발싸\WINAPI\x64\Debug\WINAPI_카드뒤집기.exe
+D:\Github\CodeTest\WinAPI\수업\20210629_총알 발싸\WINAPI\x64\Debug\WINAPI_Academy.exe

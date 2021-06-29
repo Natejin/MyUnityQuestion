@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01.Core">
+      <UniqueIdentifier>{0924f0ad-b7f1-4769-ba56-d14626117b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\01.gameNode">
+      <UniqueIdentifier>{113a5097-f0bd-4fb1-b30d-d36708e07304}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\02.manager">
+      <UniqueIdentifier>{734b6a31-ea9f-4501-80f0-a59eda014b4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\03.singleton">
+      <UniqueIdentifier>{d1138fb1-0693-4a1e-82d3-ff8a34c6ff08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\04.Function">
+      <UniqueIdentifier>{9d221f5a-a560-4f85-852c-5a28ee5637ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Unit">
+      <UniqueIdentifier>{43df07b1-1d10-4d9e-8584-139f27f370f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\ETC">
+      <UniqueIdentifier>{e92608aa-26c6-4620-a62e-6907971ac856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.MainGame">
+      <UniqueIdentifier>{de5f5ff5-3cab-448a-830e-a70e05f9b771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Game">
+      <UniqueIdentifier>{5b8e96aa-bf28-4e52-b4c8-365c5a106d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Game\02 Card">
+      <UniqueIdentifier>{6d865470-6039-4a69-8d9f-a3eca55afeb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Game\03.Bullet">
+      <UniqueIdentifier>{52433ad1-438b-4095-8ff1-5156c5f9818c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04 Game\03.Bullet\Unit">
+      <UniqueIdentifier>{0726bc20-b670-4f2a-8460-2a3d462cfce1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>01.Core\03.singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="gameNode.h">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="mainGame.h">
+      <Filter>02.MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>01.Core\02.manager</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomFunction.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>01.Core\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="WINAPI_FrameWork.h">
+      <Filter>01.Core\ETC</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="UsefulFunction.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Card\Card.h">
+      <Filter>04 Game\02 Card</Filter>
+    </ClInclude>
+    <ClInclude Include="Card\GameManager_Card.h">
+      <Filter>04 Game\02 Card</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyNode.h">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\GameManager_Bullet.h">
+      <Filter>04 Game\03.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MonoBehavior.h">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\Bullet.h">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>03.Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>03.Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>03.Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\BulletPlayer.h">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\BulletEnemy.h">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet\BulletUIManager.h">
+      <Filter>04 Game\03.Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>02.MainGame</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gameNode.cpp">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="mainGame.cpp">
+      <Filter>02.MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>01.Core\02.manager</Filter>
+    </ClCompile>
+    <ClCompile Include="WINAPI_FrameWork.cpp">
+      <Filter>01.Core\ETC</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="Card\Card.cpp">
+      <Filter>04 Game\02 Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Card\GameManager_Card.cpp">
+      <Filter>04 Game\02 Card</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\GameManager_Bullet.cpp">
+      <Filter>04 Game\03.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MonoBehavior.cpp">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\Bullet.cpp">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>03.Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>03.Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>03.Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\BulletPlayer.cpp">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\BulletEnemy.cpp">
+      <Filter>04 Game\03.Bullet\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet\BulletUIManager.cpp">
+      <Filter>04 Game\03.Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>02.MainGame</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WINAPI_FrameWork.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="WINAPI_FrameWork.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -25,12 +25,15 @@
     <Filter Include="01. Core\01 Timer">
       <UniqueIdentifier>{76df55a2-8b29-457b-8e1d-6c9aa098a398}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Scene\Layer">
+      <UniqueIdentifier>{cffd0129-95cc-4a34-88f8-528dcfb215e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3.Object">
+      <UniqueIdentifier>{a4f04657-6e25-4b3a-9484-04242cd0ebac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Singleton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Core.cpp">
@@ -48,15 +51,21 @@
     <ClCompile Include="Core\Timer.cpp">
       <Filter>01. Core\01 Timer</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\Layer.cpp">
+      <Filter>02. Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Obj.cpp">
+      <Filter>3.Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Macro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Types.h">
@@ -82,6 +91,15 @@
     </ClInclude>
     <ClInclude Include="Core\Timer.h">
       <Filter>01. Core\01 Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Layer.h">
+      <Filter>02. Scene\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Obj.h">
+      <Filter>3.Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

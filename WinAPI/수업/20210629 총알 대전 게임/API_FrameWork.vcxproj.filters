@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="gameNode">
+      <UniqueIdentifier>{2a0be0e6-62fd-43de-a606-55b511847593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="singleton">
+      <UniqueIdentifier>{87bf2d5b-3654-459b-adb0-5178817b9f2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame">
+      <UniqueIdentifier>{f28c5d41-82f0-4ccf-9c33-7c155409d006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{77fc1430-c839-4247-ae8d-f85644be1aa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1. Core">
+      <UniqueIdentifier>{e6f91fac-aa8e-4e47-8e68-4eebfa7c1fb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일\Card">
+      <UniqueIdentifier>{7f073f05-c6bb-4860-872c-f0959ca3d467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game">
+      <UniqueIdentifier>{30e8515c-8239-4cc6-8560-997653265667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game\두더지 게임">
+      <UniqueIdentifier>{5e9fc8f1-d28e-4d89-951d-22ca41f28ee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game\카드맞추기 게임">
+      <UniqueIdentifier>{d56f9ca6-25e6-4b50-985b-51823307ed70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game\1. 벽돌타기 게임">
+      <UniqueIdentifier>{fae965a2-df70-4789-adb9-ad3731a23b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game\2. 똥피하기 게임">
+      <UniqueIdentifier>{8fe2335a-38b0-4475-a77d-79aeb86b0a70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Game\3. 총알 대전 게임">
+      <UniqueIdentifier>{63dffd28-9296-4c93-9caf-9e194b211caf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="API_FrameWork.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="commonMacroFunction.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="gameNode.h">
+      <Filter>gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomFunction.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MoleBlock.h">
+      <Filter>3. Game\두더지 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="SubGameManager.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageRectMonoBehavior.h">
+      <Filter>1. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumMacro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreManager.h">
+      <Filter>mainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="MonoBehavior.h">
+      <Filter>1. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="RectMonoBehavior.h">
+      <Filter>1. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CollisionBlock\GroundBlock.h">
+      <Filter>3. Game\1. 벽돌타기 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\DropBlock\DropingBlock.h">
+      <Filter>3. Game\2. 똥피하기 게임</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\DropBlock\Player.h">
+      <Filter>3. Game\2. 똥피하기 게임</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="API_FrameWork.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="gameNode.cpp">
+      <Filter>gameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MoleBlock.cpp">
+      <Filter>3. Game\두더지 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="SubGameManager.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageRectMonoBehavior.cpp">
+      <Filter>1. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreManager.cpp">
+      <Filter>mainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="MonoBehavior.cpp">
+      <Filter>1. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="RectMonoBehavior.cpp">
+      <Filter>1. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CollisionBlock\GroundBlock.cpp">
+      <Filter>3. Game\1. 벽돌타기 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\DropBlock\DropingBlock.cpp">
+      <Filter>3. Game\2. 똥피하기 게임</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\DropBlock\Player.cpp">
+      <Filter>3. Game\2. 똥피하기 게임</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="API_FrameWork.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="API_FrameWork.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Card_Druid.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Troll.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Hunter.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Mage.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Paladin.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Prist.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Shaman.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+    <Image Include="Resource\Card_Warrior.bmp">
+      <Filter>리소스 파일\Card</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

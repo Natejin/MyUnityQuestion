@@ -4,7 +4,7 @@
 #include "../DummyNode.h"
 #include "Card.h"
 
-class GameManager_Card : public DummyNode
+class GameManager_Card : public DummyNode<GameManager_Card>
 {
 private:
 	RECT callRect;

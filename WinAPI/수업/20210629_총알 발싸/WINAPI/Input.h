@@ -3,7 +3,7 @@
 #include"framework.h"
 #include<bitset>
 #define KEYMAX 256
-class Input : public SingleTon<Input>
+class Input : public Singleton<Input>
 {
 private:
 

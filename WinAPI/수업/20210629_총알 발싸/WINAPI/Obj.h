@@ -1,12 +1,12 @@
 #pragma once
 #include "framework.h"
 
-class Obj
+class Obj 
 {
 
 public:
 	Obj() :ID(0) {};
-	Obj(int id) :ID(id) {};
+	Obj(int id) : ID(id) {};
 	virtual ~Obj(){};
 	int ID;
 	

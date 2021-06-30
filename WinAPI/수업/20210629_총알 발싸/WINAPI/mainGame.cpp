@@ -14,7 +14,7 @@ mainGame::~mainGame()
 HRESULT mainGame::init()
 {
 	gameNode::init();
-	currentlyGame = new GameManager_Bullet();
+	currentlyGame = GameManager_Bullet::GetSingleTon();
 	
 	return currentlyGame->init();
 }

@@ -1,9 +1,9 @@
 #pragma once
-#include "singleton.h"
+#include "Singleton.h"
 #include "Obj.h"
 //#include "MonoBehavior.h"
 
-class UsefulFunction :public SingleTon<UsefulFunction>
+class UsefulFunction :public Singleton<UsefulFunction>
 {
 public:
 	UsefulFunction() {};

@@ -3,7 +3,9 @@
 
 class Bullet : public MonoBehavior
 {
-
+public:
+	int damage;
+	bool Hitted;
 
 public:
 	Bullet();

@@ -30,7 +30,8 @@ HRESULT GameManager_Bullet::init()
 	//플레이어 생성
 
 	player = BulletPlayer(100,WINSIZEY/2, 40, 20, 5, 5);
-	enemy = BulletEnemy(800,WINSIZEY/2, 40, 20, 0, 5);
+	enemy = new BulletEnemy(800,WINSIZEY/2, 40, 20, 0, 5);
+	enemy->HP = 100;
 	UI.init();
 	//총알 생성
 	//for (size_t i = 0; i < 5; i++)
@@ -42,7 +43,7 @@ HRESULT GameManager_Bullet::init()
 
 void GameManager_Bullet::release()
 {
-	
+	delete enemy;
 }
 
 void GameManager_Bullet::update()
@@ -51,6 +52,8 @@ void GameManager_Bullet::update()
 
 	if (InputManager->isOnceKeyDown(VK_SPACE)) {
 		bullets.push_back(Bullet(player.pos.x + 50, player.pos.y, 5, 5, 10, 0));
+		bullets[bullets.size()-1].damage = 5;
+	
 	}
 
 
@@ -58,55 +61,29 @@ void GameManager_Bullet::update()
 	for (size_t i = 0; i < bullets.size(); i++)
 	{
 		bullets[i].bulletMove();
+
 	}
 	player.Input(1);
-
-
-	/*if (InputManager->isStayKeyDown(VK_RIGHT))OffsetRect(&m_body, 5, 0);
-	if (InputManager->isStayKeyDown(VK_LEFT))OffsetRect(&m_body, -5, 0);
-	if (InputManager->isOnceKeyDown(VK_SPACE))isFire = true;
-
-	if (!isFire)
-	{
-		m_bullet = RectMakeCenter(m_body.left + (m_body.right - m_body.left) / 2, m_body.top - 15, 30, 30);
-	}
-	else
-	{
-		OffsetRect(&m_bullet, 0, -5);
-
-		if (m_bullet.bottom < 0)
-		{
-			isFire = false;
-		}
-
-	}*/
-
-
-	//bulletMove();
-	//playerKeyControl();
-	//collision();
-
-	//for (size_t i = 0; i < BULLETMAX; i++)
-	//{
-	//	RECT temp;
-	//	if (IntersectRect(&temp, &bullet[i].rc, &))
-	//	{
-	//		bullet[i].rc = RectMakeCenter(m_player1.right + 15,
-	//			m_player1.top + (m_player1.bottom - m_player1.top) / 2, 20, 20);
-	//		m_gaugeFront.left += 20;
-
-	//		if (m_gaugeFront.left >= m_gaugeFront.right)
-	//		{
-	//			m_gaugeFront.left = m_gaugeBack.right;
-	//		}
-	//	}
-	//}
 	FixedUpdate();
 }
 
 void GameManager_Bullet::FixedUpdate()
 {
-
+	for (size_t i = 0; i < bullets.size(); i++)
+	{
+		if (!bullets[i].Hitted)
+		{
+			if (bullets[i].CheckCollision(*enemy))
+			{
+				enemy->HP -= 5;
+				bullets[i].isRender = false;
+				bullets[i].Hitted = true;
+				UI.m_gaugeFront.size.x = enemy->HP;
+				//UI.m_gaugeFront.pos.x += enemy->HP * 0.5;
+			};
+		}
+		
+	}
 }
 
 
@@ -143,7 +120,12 @@ void GameManager_Bullet::render(HDC hdc)
 		bullets[i].Render(hdc);
 	}
 	player.Render(hdc);
-	enemy.Render(hdc);
+	enemy->Render(hdc);
+	static TCHAR strMouse[64] = {};
+	wsprintf(strMouse, TEXT("outside bottom : %d "), enemy->HP);
+	TextOut(hdc, 600, 75, strMouse, lstrlen(strMouse));
+
+	
 }
 
 

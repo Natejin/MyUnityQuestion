@@ -1,6 +1,9 @@
 #pragma once
 #include "DummyNode.h"
-class UIManager :public DummyNode
+
+
+template<typename T>
+class UIManager :public DummyNode<T>
 {
 public:
 	UIManager() {};

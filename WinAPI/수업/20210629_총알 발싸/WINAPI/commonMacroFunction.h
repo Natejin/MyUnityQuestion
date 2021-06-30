@@ -46,6 +46,8 @@ inline void ElllipseMakeCenter(HDC hdc, int x, int y, int width, int height){
 	Ellipse(hdc, x - (width / 2), y - (height / 2), x + (width / 2), y + (height / 2));
 }
 
+
+
 //			===============================================
 //			||	     commonMakeStruct[구조체 만든곳]       ||
 //			===============================================

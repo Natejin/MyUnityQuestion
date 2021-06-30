@@ -19,14 +19,14 @@
 
 
 template<typename T>
-class SingleTon
+class Singleton
 {
 protected:
 	//싱글톤 인스턴스 선언
 	static T* singleton;
 
-	SingleTon() {};
-	~SingleTon() {};
+	Singleton() {};
+	virtual ~Singleton() {};
 
 public:
 	static T* GetSingleTon();
@@ -35,12 +35,12 @@ public:
 };
 //싱글톤 인스턴스 선언
 template<typename T>
-T* SingleTon<T>::singleton = nullptr;
+T* Singleton<T>::singleton = nullptr;
 
 
 //싱글톤 객체를 가져오자
 template<typename T>
-T* SingleTon<T>::GetSingleTon()
+T* Singleton<T>::GetSingleTon()
 {
 	//싱글톤 객체가 없으면 새로 만들자
 	if (!singleton) singleton = new T;
@@ -48,7 +48,7 @@ T* SingleTon<T>::GetSingleTon()
 }
 
 template<typename T>
-void SingleTon<T>::releaseSingleTon()
+void Singleton<T>::releaseSingleTon()
 {
 	if (singleton)
 	{

@@ -1,13 +1,16 @@
 #pragma once
 #include "../UIManager.h"
-class BulletUIManager:public UIManager
+#include "../MonoBehavior.h"
+class BulletUIManager:public UIManager<BulletUIManager>
 {
 public:
-	RECT m_gaugeFront;
+	MonoBehavior m_gaugeFront;
 	RECT m_gaugeBack;
 
 	int m_red;
 	int m_green;
+
+	int hp;
 
 public:
 	BulletUIManager() {};

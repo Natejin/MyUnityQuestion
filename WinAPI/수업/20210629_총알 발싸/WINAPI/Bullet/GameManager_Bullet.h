@@ -4,10 +4,10 @@
 #include "BulletPlayer.h"
 #include "BulletEnemy.h"
 #include "BulletUIManager.h"
+#include "../ObjectPool.h"
+
 #define BULLETMAX 30
-
-
-class GameManager_Bullet :public DummyNode
+class GameManager_Bullet :public DummyNode<GameManager_Bullet>
 {
 struct  tagBullet
 {
@@ -19,8 +19,7 @@ tagBullet bullet[BULLETMAX];
 
 Bullet bullet1;
 vector<Bullet> bullets;
-BulletPlayer player;
-BulletEnemy enemy;
+ObjectPool<Bullet> bullets2;
 BulletUIManager UI;
 
 
@@ -36,7 +35,9 @@ RECT m_gaugeBack;
 int m_red;
 int m_green;
 
-
+public:
+BulletPlayer player;
+BulletEnemy* enemy;
 
 public:
 	GameManager_Bullet();

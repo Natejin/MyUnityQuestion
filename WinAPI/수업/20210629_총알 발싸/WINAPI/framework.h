@@ -33,6 +33,7 @@ using namespace std;
 #include "RandomFunction.h"
 
 #include "Obj.h"
+#include "Macro.h"
 
 
 //==========================================
@@ -130,6 +131,12 @@ struct Vector2
     Vector2 operator *(const double& Other) const
     {
         return Vector2(x * Other, y * Other);
+    }
+
+
+    Vector2 operator /(const double& Other) const
+    {
+        return Vector2(x / Other, y / Other);
     }
 
     Vector2 operator -(const Vector2& Other) const

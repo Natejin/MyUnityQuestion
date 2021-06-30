@@ -6,7 +6,7 @@
 
 class mainGame: public gameNode
 {
-	DummyNode* currentlyGame;
+	GameManager_Bullet* currentlyGame;
 
 public:
 	mainGame();

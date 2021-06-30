@@ -22,9 +22,6 @@
     <Filter Include="01.Core\02.manager">
       <UniqueIdentifier>{734b6a31-ea9f-4501-80f0-a59eda014b4e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Core\03.singleton">
-      <UniqueIdentifier>{d1138fb1-0693-4a1e-82d3-ff8a34c6ff08}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Core\04.Function">
       <UniqueIdentifier>{9d221f5a-a560-4f85-852c-5a28ee5637ff}</UniqueIdentifier>
     </Filter>
@@ -49,13 +46,16 @@
     <Filter Include="04 Game\03.Bullet\Unit">
       <UniqueIdentifier>{0726bc20-b670-4f2a-8460-2a3d462cfce1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\Singleton">
+      <UniqueIdentifier>{d1138fb1-0693-4a1e-82d3-ff8a34c6ff08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="singleton.h">
-      <Filter>01.Core\03.singleton</Filter>
+    <ClInclude Include="Singleton.h">
+      <Filter>01.Core\Singleton</Filter>
     </ClInclude>
     <ClInclude Include="gameNode.h">
       <Filter>01.Core\01.gameNode</Filter>
@@ -129,6 +129,15 @@
     <ClInclude Include="UIManager.h">
       <Filter>02.MainGame</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolableObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gameNode.cpp">
@@ -184,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="UsefulFunction.cpp">
       <Filter>01.Core\04.Function</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>01.Core\01.gameNode</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolableObject.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

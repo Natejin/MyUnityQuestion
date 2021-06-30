@@ -1,8 +1,10 @@
 
 #pragma once
 #include"framework.h"
+#include "singleton.h"
 
-class DummyNode
+template<typename T>
+class DummyNode : public Singleton<T>
 {
 public:
 	DummyNode() {};

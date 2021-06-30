@@ -1,11 +1,13 @@
 #include "BulletUIManager.h"
-
+#include "GameManager_Bullet.h"
 
 
 HRESULT BulletUIManager::init()
 {
-	m_gaugeFront = RectMakeCenter(WINSIZEX / 2 + 300, 100, 400, 50);
-	m_gaugeBack = RectMakeCenter(WINSIZEX / 2 + 300, 100, 400, 50);
+
+	//m_gaugeFront = RectMakeCenter(WINSIZEX / 2, 100, hp, 50);
+	m_gaugeFront = MonoBehavior(WINSIZEX / 2, 100, GameManager_Bullet::GetSingleTon()->enemy->HP, 50, 0, 0);
+	m_gaugeBack = RectMakeCenter(WINSIZEX / 2, 100, 100, 50);
 
 	m_red = 0;
 	m_green = 255;
@@ -23,19 +25,21 @@ void BulletUIManager::update()
 
 void BulletUIManager::render(HDC hdc)
 {
-	UFUNC->DrawRect(hdc, m_gaugeFront);
-	UFUNC->DrawRect(hdc, m_gaugeBack, Color(m_red, m_green, 0));
+	m_gaugeFront.DrawRect(hdc);
 }
 
 void BulletUIManager::GaugeDraw()
 {
-	if (m_gaugeFront.right - m_gaugeFront.left <= 200)
-	{
-		m_red = 200;
-	}
-	if (m_gaugeFront.right - m_gaugeFront.left <= 80)
-	{
-		m_red = 255;
-		m_green = 0;
-	}
+	int temp= GameManager_Bullet::GetSingleTon()->enemy->HP;
+
+	//m_gaugeFront.left = ((m_gaugeFront.right - m_gaugeFront.left) / enemy.maxHP * enemy.HP);
+	//float ratio = enemy.HP / (float)enemy.maxHP;
+	//if (ratio >= 0.8)
+	//{
+	//	m_red = 200;
+	//}else if (ratio >= 0.4)
+	//{
+	//	m_red = 255;
+	//	m_green = 0;
+	//}
 }

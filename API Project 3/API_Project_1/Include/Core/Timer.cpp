@@ -1,6 +1,7 @@
 #include "Timer.h"
 
 Timer::Timer()
+	:m_fTimeScale(1.f)
 {
 }
 

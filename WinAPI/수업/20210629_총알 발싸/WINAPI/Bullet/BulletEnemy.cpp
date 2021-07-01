@@ -24,5 +24,5 @@ void BulletEnemy::Move()
 
 void BulletEnemy::Render(HDC hdc)
 {
-	Rectangle(hdc, pos.x - size.x, pos.y - size.y, pos.x + size.x, pos.y + size.y);
+	DrawRect(hdc);
 }

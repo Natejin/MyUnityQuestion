@@ -9,7 +9,15 @@ private:
 	class Scene* m_pNextScene;
 
 public:
+
 	bool Init();
+	void Input(float deltaTime);
+	int Update(float deltaTime);
+	int LateUpdate(float deltaTime);
+	void Collision(float deltaTime);
+	void Render(HDC hdc, float deltaTime);
+
+
 	SceneManager();
 	~SceneManager();
 

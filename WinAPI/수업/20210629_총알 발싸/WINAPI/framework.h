@@ -24,6 +24,11 @@ using namespace std;
 #include<map>
 #include<list>
 
+//==========================================
+//				   Enum
+//==========================================
+
+#include "enum.h"
 
 //==========================================
 //				 내가만든 헤더파일
@@ -34,136 +39,38 @@ using namespace std;
 
 #include "Obj.h"
 #include "Macro.h"
+#include "ObjectPool.h"
+#include "Image.h"
+#include "TimeManager.h"
 
+//==========================================
+//				    Struct
+//==========================================
+#include "Vector2.h"
+#include "Color.h"
+#include "Inline.h"
 
 //==========================================
 //				    Manager
 //==========================================
 
-#define InputManager	Input::GetSingleTon()
-#define RND				RandomFunction::GetSingleTon()
-#define UFUNC			UsefulFunction::GetSingleTon()
-
-//==========================================
-//				   Enum
-//==========================================
-
-#include "enum.h"
-
-//==========================================
-//				    Struct
-//==========================================
-
-struct Color
-{
-    Color(int r, int g, int b) :r(r), g(g), b(b) {};
-    Color() :r(0), g(0), b(0) {};
-    ~Color() {};
-    int r, g, b;
-
-    void Random() {
-        r = RND->GetInt(256);
-        g = RND->GetInt(256);
-        b = RND->GetInt(256);
-    }
-
-    Color GetColor(COLOR color) {
-        switch (color)
-        {
-        case COLOR::RED:
-            r = 255;
-            g = 0;
-            b = 0;
-            break;
-        default:
-            break;
-        }
-        return *this;
-    }
-};
-
-struct Vector2
-{
-    double x, y;
-
-    Vector2() { x = 0; y = 0; }
-    Vector2(double x, double y) :x(x), y(y) {};
-    void SetPos(double _x, double _y) {
-        x = _x;
-        y = _y;
-    }
-
-    bool operator !=(const Vector2& Other) const
-    {
-        return (x != Other.x || y != Other.y);
-    }
-
-    bool operator ==(const Vector2& Other) const
-    {
-        return (x == Other.x && y == Other.y);
-    }
-
-    Vector2& operator+=(const Vector2& rhs) {
-
-        this->x += rhs.x;
-        this->y += rhs.y;
-        return *this;
-    }
-
-    Vector2& operator-=(const Vector2& rhs) {
-
-        this->x -= rhs.x;
-        this->y -= rhs.y;
-        return *this;
-    }
-
-    Vector2& operator-() {
-        this->x = -(this->x);
-        this->y = -(this->y);
-        return *this;
-    }
-
-    Vector2 operator +(const Vector2& Other) const
-    {
-        return Vector2(x + Other.x, y + Other.y);
-    }
-
-    Vector2 operator *(const double& Other) const
-    {
-        return Vector2(x * Other, y * Other);
-    }
-
-
-    Vector2 operator /(const double& Other) const
-    {
-        return Vector2(x / Other, y / Other);
-    }
-
-    Vector2 operator -(const Vector2& Other) const
-    {
-        return Vector2(x - Other.x, y - Other.y);
-    }
-};
-
+#define MG_INPUT		InputManager::GetSingleton()
+#define MG_RND			RandomManager::GetSingleton()
+#define MG_TIME			TimeManager::GetSingleton()
+#define UFUNC			UsefulFunction::GetSingleton()
+//#define UFUNC			UsefulFunction::GetSingleton()
 
 
 #include "UsefulFunction.h"
-//==========================================
-//				 매크로 설정
-//==========================================
-#define WINNAME			(LPTSTR)(TEXT("카드뒤집기"))
-#define WINSTARTX		100
-#define WINSTARTY		100
-#define WINSIZEX		1024
-#define WINSIZEY		768
-#define	WINSTYLE		WS_CAPTION | WS_SYSMENU
+
+
+
 
 
 //==========================================
 //			메인게임 릴리즈에서 사용
 //==========================================
 
-#define SAFE_DELETE(p) {if(p) {delete(p);(p) = nullptr;}}
 
 
 

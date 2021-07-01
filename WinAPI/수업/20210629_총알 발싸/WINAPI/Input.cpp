@@ -1,10 +1,10 @@
 #include "Input.h"
 
-Input::Input(){}
+InputManager::InputManager(){}
 
-Input::~Input(){}
+InputManager::~InputManager(){}
 
-HRESULT Input::init()
+HRESULT InputManager::Init()
 {
 	//키가 전부 눌려있지 않은 상태로 초기화
 	for (int i = 0; i < KEYMAX; i++)
@@ -16,11 +16,11 @@ HRESULT Input::init()
 	return S_OK;
 }
 
-void Input::release()
+void InputManager::Release()
 {
 }
 
-bool Input::isOnceKeyDown(int key)
+bool InputManager::isOnceKeyDown(int key)
 {
 	//GetAsyncKeyState : 현재 키의 상태를 알아온다.
 	//키가 눌렸을때나 떨어졌을때 호출
@@ -40,7 +40,7 @@ bool Input::isOnceKeyDown(int key)
 	return false;
 }
 
-bool Input::isOnceKeyUp(int key)
+bool InputManager::isOnceKeyUp(int key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)
 	{
@@ -57,13 +57,13 @@ bool Input::isOnceKeyUp(int key)
 	return false;
 }
 
-bool Input::isStayKeyDown(int key)
+bool InputManager::isStayKeyDown(int key)
 {
 	if (GetAsyncKeyState(key) & 0x8000)return true;
 	return false;
 }
 
-bool Input::isToggleKey(int key)
+bool InputManager::isToggleKey(int key)
 {
 	if (GetKeyState(key) & 0x0001)return true;
 	return false;

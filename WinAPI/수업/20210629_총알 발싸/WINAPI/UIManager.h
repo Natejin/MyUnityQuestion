@@ -9,9 +9,9 @@ public:
 	UIManager() {};
 	virtual ~UIManager() {};
 
-	virtual HRESULT init() { return S_OK; };
-	virtual void release() {};
-	virtual void update() {};
-	virtual void render(HDC hdc) {};
+	virtual HRESULT Init() { return S_OK; };
+	virtual void Release() {};
+	virtual void Update() {};
+	virtual void Render(HDC hdc) {};
 };
 

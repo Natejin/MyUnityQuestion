@@ -2,11 +2,11 @@
 #include "GameManager_Bullet.h"
 
 
-HRESULT BulletUIManager::init()
+HRESULT BulletUIManager::Init()
 {
 
 	//m_gaugeFront = RectMakeCenter(WINSIZEX / 2, 100, hp, 50);
-	m_gaugeFront = MonoBehavior(WINSIZEX / 2, 100, GameManager_Bullet::GetSingleTon()->enemy->HP, 50, 0, 0);
+	m_gaugeFront = MonoBehavior(WINSIZEX / 2, 100, GameManager_Bullet::GetSingleton()->enemy.HP, 50, 0, 0);
 	m_gaugeBack = RectMakeCenter(WINSIZEX / 2, 100, 100, 50);
 
 	m_red = 0;
@@ -14,23 +14,23 @@ HRESULT BulletUIManager::init()
 	return S_OK;
 }
 
-void BulletUIManager::release()
+void BulletUIManager::Release()
 {
 }
 
-void BulletUIManager::update()
+void BulletUIManager::Update()
 {
 	GaugeDraw();
 }
 
-void BulletUIManager::render(HDC hdc)
+void BulletUIManager::Render(HDC hdc)
 {
 	m_gaugeFront.DrawRect(hdc);
 }
 
 void BulletUIManager::GaugeDraw()
 {
-	int temp= GameManager_Bullet::GetSingleTon()->enemy->HP;
+	int temp= GameManager_Bullet::GetSingleton()->enemy.HP;
 
 	//m_gaugeFront.left = ((m_gaugeFront.right - m_gaugeFront.left) / enemy.maxHP * enemy.HP);
 	//float ratio = enemy.HP / (float)enemy.maxHP;

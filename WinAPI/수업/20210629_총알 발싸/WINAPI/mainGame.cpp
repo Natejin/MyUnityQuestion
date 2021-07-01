@@ -1,38 +1,52 @@
-#include "mainGame.h"
+#include "MainGame.h"
 
 
 #define MAXCARD 16
 
-mainGame::mainGame()
+MainGame::MainGame()
 {
 }
 
-mainGame::~mainGame()
+MainGame::~MainGame()
 {
 }
 
-HRESULT mainGame::init()
+HRESULT MainGame::Init()
 {
-	gameNode::init();
-	currentlyGame = GameManager_Bullet::GetSingleTon();
+	GameNode::Init();
+	currentlyGame = GameManager_Bullet::GetSingleton();
 	
-	return currentlyGame->init();
+	return currentlyGame->Init();
 }
 
-void mainGame::release()
+void MainGame::Release()
 {
-	gameNode::release();
-	currentlyGame->release();
+	GameNode::Release();
+	currentlyGame->Release();
 }
 
-void mainGame::update()
+void MainGame::Update()
 {
-	gameNode::update();
-	currentlyGame->update();
+	GameNode::Update();
+	currentlyGame->Update();
 	
 }
 
-void mainGame::render(HDC hdc)
+void MainGame::Render()
 {
-	currentlyGame->render(hdc);
+
+	PatBlt(GetMemDC(), 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
+	//=================================================
+	{
+		//SCENE->Render();
+	}
+	//==================   Debug   ====================
+	if (isDebug)
+	{
+
+	}
+	//=================================================
+	FRAME->Render(GetMemDC());
+	this->SetBackBuffer()->Render(GetHDC());
+	currentlyGame->Render(GetHDC());
 }

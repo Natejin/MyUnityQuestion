@@ -5,6 +5,7 @@ class Core : public Singleton<Core>
 private:
 	HINSTANCE hInst;
 	HWND hWnd;
+	HDC hdc;
 	RESOLUTION typeResolution;
 	static bool loop;
 
@@ -15,9 +16,18 @@ public:
 	~Core();
 
 private:
+	void Logic();
+
+private:
 	ATOM MyRegisterClass();
 	BOOL Create();
-	void Logic();
+
+private:
+	void Input(float deltaTime);
+	int Update(float deltaTime);
+	int LateUpdate(float deltaTime);
+	void Collision(float deltaTime);
+	void Render(float deltaTime);
 
 public :
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

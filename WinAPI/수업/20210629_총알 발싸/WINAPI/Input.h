@@ -3,7 +3,7 @@
 #include"framework.h"
 #include<bitset>
 #define KEYMAX 256
-class Input : public Singleton<Input>
+class InputManager : public Singleton<InputManager>
 {
 private:
 
@@ -11,11 +11,11 @@ private:
 	bitset<KEYMAX> _keyDown;
 
 public:
-	Input();
-	~Input();
+	InputManager();
+	~InputManager();
 
-	HRESULT init();
-	void release();
+	HRESULT Init();
+	void Release();
 	
 	//한번만 눌렀나?
 	bool isOnceKeyDown(int key);

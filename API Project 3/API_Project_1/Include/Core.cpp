@@ -14,6 +14,9 @@ bool Core::Init(HINSTANCE _hInst)
 	typeResolution.SetSize(WINSIZEX, WINSIZEY);
 
 	Create();
+	//화면 DC를 만들어준다.
+	hdc = GetDC(hWnd);
+
 
 	//타이머 초기화
 	if (!Timer::GetInst()->Init())
@@ -125,6 +128,39 @@ void Core::Logic()
 	GET_SINGLE(Timer)->Update();
 
 	float fDeltaTime = GET_SINGLE(Timer)->GetDeltaTime();
+
+	Input(fDeltaTime);
+	Update(fDeltaTime);
+	LateUpdate(fDeltaTime);
+	Collision(fDeltaTime);
+	Render(fDeltaTime);
+}
+
+void Core::Input(float deltaTime)
+{
+	GET_SINGLE(SceneManager)->Input(deltaTime);
+}
+
+int Core::Update(float deltaTime)
+{
+	GET_SINGLE(SceneManager)->Update(deltaTime);
+	return 0;
+}
+
+int Core::LateUpdate(float deltaTime)
+{
+	GET_SINGLE(SceneManager)->LateUpdate(deltaTime);
+	return 0;
+}
+
+void Core::Collision(float deltaTime)
+{
+	GET_SINGLE(SceneManager)->Collision(deltaTime);
+}
+
+void Core::Render(float deltaTime)
+{
+	GET_SINGLE(SceneManager)->Render(hdc, deltaTime);
 }
 
 LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

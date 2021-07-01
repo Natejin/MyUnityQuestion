@@ -1,58 +1,91 @@
+//#pragma once
+//
+////======================================
+////				SingleTon
+////======================================
+//
+///*
+//싱글톤 패턴은 static member로 하나의 인스턴스만
+//생성된다. 프로그램 안에서 전역적 접근이 가능하다.
+//전역변수 선언해도 하나의 인스턴스를 유지할 수 있긴하지만,
+//싱글톤패턴을 사용하면 클래스 자신이 자기의 유일한 인스턴스로
+//접근하는 방법을 캡슐화 하여 관리할 수 있다.
+//그리고 상속, 객체생성, 소멸, 인스턴스 갯수 제어 등등..
+//활용에 유리하다.
+//
+//자기 스스로가 유일한 인스턴스로 접근하는 방법을 자체적으로 관리하는게 좋다.
+//다른 인스턴스가 생성되지 않도록 처리할 수 있고 접근 방법 또한 제한을 둘 수 있다.
+//*/
+//
+//
+//template<typename T>
+//class Singleton
+//{
+//protected:
+//	//싱글톤 인스턴스 선언
+//	static T* singleton;
+//
+//	Singleton() {};
+//	virtual ~Singleton() {};
+//
+//public:
+//	static T* GetSingleTon();
+//	void releaseSingleTon();
+//
+//};
+////싱글톤 인스턴스 선언
+//template<typename T>
+//T* Singleton<T>::singleton = nullptr;
+//
+//
+////싱글톤 객체를 가져오자
+//template<typename T>
+//T* Singleton<T>::GetSingleTon()
+//{
+//	//싱글톤 객체가 없으면 새로 만들자
+//	if (!singleton) singleton = new T;
+//	return singleton;
+//}
+//
+//template<typename T>
+//void Singleton<T>::releaseSingleTon()
+//{
+//	if (singleton)
+//	{
+//		delete singleton;
+//		singleton = nullptr;
+//	}
+//}
+
+
+#include <Windows.h>
 #pragma once
 
-//======================================
-//				SingleTon
-//======================================
-
-/*
-싱글톤 패턴은 static member로 하나의 인스턴스만
-생성된다. 프로그램 안에서 전역적 접근이 가능하다.
-전역변수 선언해도 하나의 인스턴스를 유지할 수 있긴하지만,
-싱글톤패턴을 사용하면 클래스 자신이 자기의 유일한 인스턴스로
-접근하는 방법을 캡슐화 하여 관리할 수 있다.
-그리고 상속, 객체생성, 소멸, 인스턴스 갯수 제어 등등..
-활용에 유리하다.
-
-자기 스스로가 유일한 인스턴스로 접근하는 방법을 자체적으로 관리하는게 좋다.
-다른 인스턴스가 생성되지 않도록 처리할 수 있고 접근 방법 또한 제한을 둘 수 있다.
-*/
-
-
 template<typename T>
-class Singleton
-{
+class Singleton {
 protected:
-	//싱글톤 인스턴스 선언
-	static T* singleton;
-
+	static T* instance;
 	Singleton() {};
-	virtual ~Singleton() {};
+	~Singleton() {};
 
 public:
-	static T* GetSingleTon();
-	void releaseSingleTon();
-
+	static T* GetSingleton();
+	void ReleaseSingleton();
 };
-//싱글톤 인스턴스 선언
-template<typename T>
-T* Singleton<T>::singleton = nullptr;
 
-
-//싱글톤 객체를 가져오자
 template<typename T>
-T* Singleton<T>::GetSingleTon()
-{
-	//싱글톤 객체가 없으면 새로 만들자
-	if (!singleton) singleton = new T;
-	return singleton;
+T* Singleton<T>::instance = NULL;
+
+template<typename T>
+T* Singleton<T>::GetSingleton() {
+	if (!instance) instance = new T;
+	return instance;
 }
 
 template<typename T>
-void Singleton<T>::releaseSingleTon()
-{
-	if (singleton)
-	{
-		delete singleton;
-		singleton = nullptr;
+void Singleton<T>::ReleaseSingleton() {
+	if (instance) {
+		delete instance;
+		instance = 0;
 	}
 }

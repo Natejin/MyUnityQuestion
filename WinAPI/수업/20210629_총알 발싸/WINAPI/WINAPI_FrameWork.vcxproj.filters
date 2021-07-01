@@ -49,6 +49,18 @@
     <Filter Include="01.Core\Singleton">
       <UniqueIdentifier>{d1138fb1-0693-4a1e-82d3-ff8a34c6ff08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Core\03 Struct">
+      <UniqueIdentifier>{bcc99cd8-e757-4503-9b85-ca24af5e8cba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\02.manager\Time">
+      <UniqueIdentifier>{d3056659-2218-4795-8256-37de8c2b75e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\02.manager\Image">
+      <UniqueIdentifier>{e29c85eb-0283-4301-9162-2ba1f072582e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Core\02.manager\Input">
+      <UniqueIdentifier>{7e09ade9-d31f-427a-87d8-8c284a5fdfe7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -57,17 +69,11 @@
     <ClInclude Include="Singleton.h">
       <Filter>01.Core\Singleton</Filter>
     </ClInclude>
-    <ClInclude Include="gameNode.h">
+    <ClInclude Include="GameNode.h">
       <Filter>01.Core\01.gameNode</Filter>
     </ClInclude>
-    <ClInclude Include="mainGame.h">
+    <ClInclude Include="MainGame.h">
       <Filter>02.MainGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>01.Core\02.manager</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomFunction.h">
-      <Filter>01.Core\04.Function</Filter>
     </ClInclude>
     <ClInclude Include="commonMacroFunction.h">
       <Filter>01.Core\04.Function</Filter>
@@ -75,13 +81,7 @@
     <ClInclude Include="targetver.h">
       <Filter>01.Core\ETC</Filter>
     </ClInclude>
-    <ClInclude Include="WINAPI_FrameWork.h">
-      <Filter>01.Core\ETC</Filter>
-    </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="enum.h">
+    <ClInclude Include="Enum.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Obj.h">
@@ -135,22 +135,52 @@
     <ClInclude Include="Macro.h">
       <Filter>01.Core\04.Function</Filter>
     </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomFunction.h">
+      <Filter>01.Core\Singleton</Filter>
+    </ClInclude>
     <ClInclude Include="PoolableObject.h">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClInclude>
+    <ClInclude Include="WINAPI_FrameWork.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Inline.h">
+      <Filter>01.Core\04.Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>01.Core\02.manager\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>01.Core\02.manager\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>01.Core\02.manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageManager.h">
+      <Filter>01.Core\02.manager\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>01.Core\02.manager\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="gameNode.cpp">
+    <ClCompile Include="GameNode.cpp">
       <Filter>01.Core\01.gameNode</Filter>
     </ClCompile>
-    <ClCompile Include="mainGame.cpp">
+    <ClCompile Include="MainGame.cpp">
       <Filter>02.MainGame</Filter>
-    </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>01.Core\02.manager</Filter>
-    </ClCompile>
-    <ClCompile Include="WINAPI_FrameWork.cpp">
-      <Filter>01.Core\ETC</Filter>
     </ClCompile>
     <ClCompile Include="Obj.cpp">
       <Filter>01.Core\01.gameNode</Filter>
@@ -197,8 +227,32 @@
     <ClCompile Include="ObjectPool.cpp">
       <Filter>01.Core\01.gameNode</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClCompile>
     <ClCompile Include="PoolableObject.cpp">
+      <Filter>01.Core\03 Struct</Filter>
+    </ClCompile>
+    <ClCompile Include="WINAPI_FrameWork.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>01.Core\02.manager\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>01.Core\02.manager\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>01.Core\02.manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageManager.cpp">
+      <Filter>01.Core\02.manager\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>01.Core\02.manager\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

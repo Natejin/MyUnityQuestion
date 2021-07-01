@@ -5,14 +5,14 @@ Bullet::Bullet()
 
 }
 
-Bullet::Bullet(double posX, double posY, double sizeX, double sizeY, double speedX, double speedY)
-	:MonoBehavior( posX,  posY, sizeX,  sizeY,  speedX,  speedY)
+Bullet::Bullet(double posX, double posY, double sizeX, double sizeY, double speedX, double speedY, double damage)
+	:MonoBehavior( posX,  posY, sizeX,  sizeY,  speedX,  speedY), damage(damage)
 {
 
 }
 
-Bullet::Bullet(Vector2 pos, Vector2 size, Vector2 speed)
-	:MonoBehavior(pos,size,speed)
+Bullet::Bullet(Vector2 pos, Vector2 size, Vector2 speed, double damage = 0)
+	:MonoBehavior(pos,size,speed), damage(damage)
 {
 	
 }
@@ -21,14 +21,30 @@ Bullet::~Bullet()
 {
 }
 
+void Bullet::Initiate(double posX, double posY, double sizeX, double sizeY, double speedX, double speedY, double damage)
+{
+	pos.x = posX;
+	pos.y = posY;
+	size.x = sizeX;
+	size.y = sizeY;
+	speed.x = speedX;
+	speed.y = speedY;
+	this->damage = damage;
+}
+
+
+
 void Bullet::bulletMove()
 {
-	pos += speed;
+	if (isActivate)
+	{
+		pos += speed;
+	}
 }
 
 void Bullet::Render(HDC hdc)
 {
-	if (isRender)
+	if (isActivate)
 	{
 	
 		HBRUSH hbr;
@@ -41,5 +57,22 @@ void Bullet::Render(HDC hdc)
 		DeleteObject(hbr); 	// 생성한 브러쉬 삭제
 	}
 
+}
+
+void Bullet::Enable()
+{
+}
+
+void Bullet::Start()
+{
+}
+
+void Bullet::Update()
+{
+	MonoBehavior::Update();
+}
+
+void Bullet::Disable()
+{
 }
 

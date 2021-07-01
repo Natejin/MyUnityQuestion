@@ -9,8 +9,8 @@ std::vector<T>* UsefulFunction::Shuffle(std::vector<T>* vec, int size)
 		int dest, sour;
 		for (size_t i = 0; i < 100; i++)
 		{
-			dest = RandomFunction::GetSingleTon()->GetInt(size);
-			sour = RandomFunction::GetSingleTon()->GetInt(size);
+			dest = RandomManager::GetSingleTon()->GetInt(size);
+			sour = RandomManager::GetSingleTon()->GetInt(size);
 
 			auto temp = vec[dest];
 			vec[dest] = vec[sour];

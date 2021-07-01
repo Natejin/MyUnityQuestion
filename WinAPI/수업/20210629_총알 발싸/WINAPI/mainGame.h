@@ -4,18 +4,18 @@
 #include "Card/GameManager_Card.h"
 
 
-class mainGame: public gameNode
+class MainGame: public GameNode
 {
 	GameManager_Bullet* currentlyGame;
-
+	bool isDebug;
 public:
-	mainGame();
-	~mainGame();
+	MainGame();
+	~MainGame();
 
-	virtual HRESULT init();
-	virtual void release();
-	virtual void update();
-	virtual void render(HDC hdc);
+	virtual HRESULT Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void Render();
 
 };
 

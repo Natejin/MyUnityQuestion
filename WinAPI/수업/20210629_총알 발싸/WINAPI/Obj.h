@@ -5,9 +5,13 @@ class Obj
 {
 
 public:
-	Obj() :ID(0) {};
-	Obj(int id) : ID(id) {};
+	Obj() {};
+	Obj(int id, int classID) : instanceID(id), classID(classID) {};
 	virtual ~Obj(){};
+
+public:
+	int instanceID;
+	int classID;
 	int ID;
 	
 };

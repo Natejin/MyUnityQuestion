@@ -16,10 +16,10 @@ public:
 	BulletUIManager() {};
 	virtual ~BulletUIManager() {};
 
-	virtual HRESULT init();
-	virtual void release();
-	virtual void update();
-	virtual void render(HDC hdc);
+	virtual HRESULT Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void Render(HDC hdc);
 
 public:
 	void GaugeDraw();

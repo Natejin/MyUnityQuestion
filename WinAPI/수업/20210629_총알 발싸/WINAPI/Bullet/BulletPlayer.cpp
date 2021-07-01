@@ -23,18 +23,18 @@ void BulletPlayer::Move()
 	
 }
 
-void BulletPlayer::Input(int code)
+void BulletPlayer::InputManager(int code)
 {
-	if (InputManager->isStayKeyDown(VK_UP)){
+	if (MG_INPUT->isStayKeyDown(VK_UP)){
 		pos.y -= speed.y;
 	}
-	if (InputManager->isStayKeyDown(VK_DOWN)){
+	if (MG_INPUT->isStayKeyDown(VK_DOWN)){
 		pos.y += speed.y; 
 	}
-	if (InputManager->isStayKeyDown(VK_LEFT)){
+	if (MG_INPUT->isStayKeyDown(VK_LEFT)){
 		pos.x -= speed.x;
 	}
-	if (InputManager->isStayKeyDown(VK_RIGHT)){
+	if (MG_INPUT->isStayKeyDown(VK_RIGHT)){
 		pos.x += speed.x;
 	}
 }
@@ -46,5 +46,5 @@ void BulletPlayer::bulletFire()
 
 void BulletPlayer::Render(HDC hdc)
 {
-	Rectangle(hdc, pos.x - size.x, pos.y - size.y, pos.x + size.x, pos.y + size.y);
+	DrawRect(hdc);
 }

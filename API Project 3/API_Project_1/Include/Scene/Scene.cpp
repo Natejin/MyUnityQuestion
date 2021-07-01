@@ -3,8 +3,8 @@
 
 Scene::Scene()
 {
-	Layer* pLayer = CreateLayer("Default");
-	pLayer = CreateLayer("UI", INT_MAX);
+	Layer* pLayer = CreateLayer(TAG::DEFAULT);
+	pLayer = CreateLayer(TAG::UI, INT_MAX);
 }
 
 Scene::~Scene()
@@ -12,7 +12,7 @@ Scene::~Scene()
 	SAFE_DELETE_VECLIST(list<class Layer*>, layerList);
 }
 
-Layer* Scene::CreateLayer(const string& tag, int order)
+Layer* Scene::CreateLayer(const TAG& tag, int order)
 {
 	Layer* player = new Layer;
 
@@ -27,7 +27,93 @@ Layer* Scene::CreateLayer(const string& tag, int order)
 	return nullptr;
 }
 
+Layer* Scene::FindLayer(const TAG& tag)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		
+		if ((*iter)->GetTag() == tag) return *iter;
+	}
+	return NULL;
+}
+
+
+
 bool Scene::Init()
+{
+	return true;
+}
+
+void Scene::Input(float deltaTime)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->Input(deltaTime);
+	}
+}
+
+int Scene::Update(float deltaTime)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->Update(deltaTime);
+	}
+	return 0;
+}
+
+int Scene::LateUpdate(float deltaTime)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->LateUpdate(deltaTime);
+	}
+	return 0;
+}
+
+
+
+void Scene::Collision(float deltaTime)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->Collision(deltaTime);
+	}
+}
+
+
+//±×·¡ÇÈ
+void Scene::Render(HDC hdc, float deltaTime)
+{
+	list<Layer*>::iterator iter;
+	list<Layer*>::iterator iterEnd = layerList.end();
+
+	for (iter = layerList.begin(); iter != iterEnd; ++iter)
+	{
+		(*iter)->Render(hdc, deltaTime);
+	}
+}
+
+bool Scene::Enable()
+{
+	return true;
+}
+
+bool Scene::Disable()
 {
 	return true;
 }

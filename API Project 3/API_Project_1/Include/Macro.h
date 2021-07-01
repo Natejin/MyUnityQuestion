@@ -13,11 +13,21 @@
 #define	WINSTYLE		WS_CAPTION | WS_SYSMENU
 
 
+//// define
+//#define WINNAME (LPTSTR)(TEXT("APIFrameWork"))
+//#define WINSTARTX 25
+//#define WINSTARTY 25
+//#define WINSIZEX 1024
+//#define WINSIZEY 768
+//#define WINSTYLE WS_CAPTION | WS_SYSMENU
+
+
 //==========================================
 //			메인게임 릴리즈에서 사용
 //==========================================
-#define SAFE_DELETE(p) if(p) {delete p ; p= nullptr;}
-#define SAFE_DELETE_ARRAY(p) if(p) {delete[] p; p= nullptr;}
+#define SAFE_DELETE(p) if(p) {delete p ; p= NULL;}
+#define SAFE_DELETE_ARRAY(p) if(p) {delete[] p; p= NULL;}
+#define SAFE_RELEASE(p) if(p) {p->Release(); p = NULL; }
 
 #define GET_SINGLE(Type) Type::GetInst()
 #define DESTROY_SINGLE(Type) Type::DestroyInst()

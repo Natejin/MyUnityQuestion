@@ -15,5 +15,6 @@ bool InGameScene::Init()
 	{
 		return false;
 	}
+
 	return true;
 }

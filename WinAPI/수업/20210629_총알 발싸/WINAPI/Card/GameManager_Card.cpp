@@ -11,7 +11,7 @@ GameManager_Card::~GameManager_Card()
 {
 }
 
-HRESULT GameManager_Card::init()
+HRESULT GameManager_Card::Init()
 {
 	int id = 0;
 	callRect = RECT();
@@ -29,17 +29,17 @@ HRESULT GameManager_Card::init()
 	return S_OK;
 }
 
-void GameManager_Card::release()
+void GameManager_Card::Release()
 {
 
 }
 
-void GameManager_Card::update()
+void GameManager_Card::Update()
 {
 
 
 	//마우스 누를시
-	if (InputManager->isOnceKeyDown(VK_LBUTTON))
+	if (MG_INPUT->isOnceKeyDown(VK_LBUTTON))
 	{
 		for (size_t i = 0; i < v_cards.size(); i++)
 		{
@@ -83,7 +83,7 @@ void GameManager_Card::update()
 	}
 }
 
-void GameManager_Card::render(HDC hdc)
+void GameManager_Card::Render(HDC hdc)
 {
 
 	for (int i = 0; i < v_cards.size(); i++)
@@ -144,8 +144,8 @@ void GameManager_Card::shuffle()
 
 	for (int i = 0; i < 25; i++)
 	{
-		dest = RND->GetInt(int(v_cards.size()));
-		sour = RND->GetInt(int(v_cards.size()));
+		dest = MG_RND->GetInt(int(v_cards.size()));
+		sour = MG_RND->GetInt(int(v_cards.size()));
 
 		auto temp = v_cards[dest];
 		v_cards[dest] = v_cards[sour];

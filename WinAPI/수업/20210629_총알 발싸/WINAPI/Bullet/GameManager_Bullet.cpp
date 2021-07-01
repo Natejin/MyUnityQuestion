@@ -2,13 +2,14 @@
 
 GameManager_Bullet::GameManager_Bullet()
 {
+
 }
 
 GameManager_Bullet::~GameManager_Bullet()
 {
 }
 
-HRESULT GameManager_Bullet::init()
+HRESULT GameManager_Bullet::Init()
 {
 	/*m_body = RectMakeCenter(WINSIZEX / 2, WINSIZEY - 100, 50, 100);
 		m_bullet = RectMakeCenter(m_body.left + (m_body.right - m_body.left) / 2, m_body.top - 15, 30, 30);*/
@@ -30,9 +31,9 @@ HRESULT GameManager_Bullet::init()
 	//플레이어 생성
 
 	player = BulletPlayer(100,WINSIZEY/2, 40, 20, 5, 5);
-	enemy = new BulletEnemy(800,WINSIZEY/2, 40, 20, 0, 5);
-	enemy->HP = 100;
-	UI.init();
+	enemy =  BulletEnemy(800,WINSIZEY/2, 40, 20, 0, 5);
+	enemy.HP = 100;
+	UI.Init();
 	//총알 생성
 	//for (size_t i = 0; i < 5; i++)
 	//{
@@ -41,53 +42,136 @@ HRESULT GameManager_Bullet::init()
 	return S_OK;
 }
 
-void GameManager_Bullet::release()
+void GameManager_Bullet::Release()
 {
-	delete enemy;
+	
 }
 
-void GameManager_Bullet::update()
+void GameManager_Bullet::Update()
 {
-	UI.update();
+	UI.Update();
 
-	if (InputManager->isOnceKeyDown(VK_SPACE)) {
-		bullets.push_back(Bullet(player.pos.x + 50, player.pos.y, 5, 5, 10, 0));
-		bullets[bullets.size()-1].damage = 5;
-	
+	if (MG_INPUT->isStayKeyDown('Q')) {
+		for (int i = 0; i < 5; i++)
+		{
+			Bullet* bullet = poolBullet.PopObject();
+			bullet->Initiate(player.pos.x + 50, player.pos.y, 5, 5, 10, (double)(-10 + i * 5), 5);
+			bullet->damage = 3;
+			bullets.push_back(*bullet);
+		}
 	}
 
+	if (MG_INPUT->isStayKeyDown('W')) {
+		Bullet* bullet = poolBullet.PopObject();
+		bullet->Initiate(player.pos.x + 50, player.pos.y, 5, 5, 10, 0, 5);
+		bullet->damage = 5;
+		bullets.push_back(*bullet);
+	}
 
+	if (MG_INPUT->isStayKeyDown('E')) {
+		Bullet* bullet = poolBullet.PopObject();
+		bullet->Initiate(player.pos.x + 50, player.pos.y, 10, 10, 10, 0, 10);
+		bullet->damage = 5;
+		bullets.push_back(*bullet);
+	}
 	
-	for (size_t i = 0; i < bullets.size(); i++)
+	for (int i = 0; i < bullets.size(); i++)
 	{
 		bullets[i].bulletMove();
 
 	}
-	player.Input(1);
+
+	/*for (int i = 0; i < bullets2.size(); i++)
+	{
+		bullets2[i].bulletMove();
+
+	}*/
+	player.InputManager(1);
 	FixedUpdate();
 }
 
 void GameManager_Bullet::FixedUpdate()
 {
-	for (size_t i = 0; i < bullets.size(); i++)
+	int index = 0;
+	vector<int> removeIndex;
+	for (Bullet& attack : bullets) // access by reference to avoid copying
 	{
-		if (!bullets[i].Hitted)
+		if (attack.CheckCollision(enemy))
 		{
-			if (bullets[i].CheckCollision(*enemy))
-			{
-				enemy->HP -= 5;
-				bullets[i].isRender = false;
-				bullets[i].Hitted = true;
-				UI.m_gaugeFront.size.x = enemy->HP;
-				//UI.m_gaugeFront.pos.x += enemy->HP * 0.5;
-			};
+			poolBullet.ReturnObject(&attack);
+			
+			enemy.HP -= 5;
+			removeIndex.push_back(bullets[index].GetInstanceID());
+			bullets[index].pos.x = WINSIZEX + 100;
+			bullets.erase(bullets.begin() + index);
+			//UI.m_gaugeFront.size.x = enemy.HP;
 		}
-		
+		else if (bullets[index].pos.x > WINSIZEX) {
+			bullets[index].pos.x = WINSIZEX + 100;
+			poolBullet.ReturnObject(&attack);
+			removeIndex.push_back(bullets[index].GetInstanceID());
+			bullets.erase(bullets.begin() + index);
+			
+		}
+		else {
+			index++;
+		}
+
 	}
+	//int count = vector.size();
+	
+	//for (size_t i = 0; i < removeIndex.size(); i++)
+	//{
+	//	for (size_t j = 0; j < bullets.size(); j++)
+	//	{
+	//		if (bullets[j].GetInstanceID() == removeIndex[i])
+	//		{
+	//			bullets.erase(bullets.begin() + j);
+	//			break;
+	//		}
+	//	}
+	//}
+	//index = 0;
+	//for (Bullet& attack : bullets2) // access by reference to avoid copying
+	//{
+	//	if (attack.CheckCollision(player))
+	//	{
+	//		poolBullet.ReturnObject(&attack);
+	//		bullets2.erase(bullets2.begin() + index);
+	//		player.HP -= 5;
+	//		//UI.m_gaugeFront.size.x = player.HP;
+	//	}
+	//	else if (bullets2[index].pos.x < 0) {
+	//		poolBullet.ReturnObject(&attack);
+	//		bullets2.erase(bullets2.begin() + index);
+	//	} {
+	//		index++;
+	//	}
+	//}
+}
+
+void GameManager_Bullet::bulletFire()
+{
+}
+
+void GameManager_Bullet::bulletMove()
+{
+}
+
+void GameManager_Bullet::gaugeDraw()
+{
+}
+
+void GameManager_Bullet::collision()
+{
+}
+
+void GameManager_Bullet::playerKeyControl()
+{
 }
 
 
-void GameManager_Bullet::render(HDC hdc)
+void GameManager_Bullet::Render(HDC hdc)
 {
 
 	//Rectangle(hdc, m_body.left, m_body.top, m_body.right, m_body.bottom);
@@ -114,88 +198,45 @@ void GameManager_Bullet::render(HDC hdc)
 	//	if (!bullet[i].isFire)continue;
 	//	Ellipse(hdc, bullet[i].rc.left, bullet[i].rc.top, bullet[i].rc.right, bullet[i].rc.bottom);
 	//}
-	UI.render(hdc);
+	UI.Render(hdc);
 	for (size_t i = 0; i < bullets.size(); i++)
 	{
 		bullets[i].Render(hdc);
 	}
+
+	//for (size_t i = 0; i < bullets2.size(); i++)
+	//{
+	//	bullets2[i].Render(hdc);
+	//}
 	player.Render(hdc);
-	enemy->Render(hdc);
+	enemy.Render(hdc);
 	static TCHAR strMouse[64] = {};
-	wsprintf(strMouse, TEXT("outside bottom : %d "), enemy->HP);
+	wsprintf(strMouse, TEXT("player HP : %d "), player.HP);
+	TextOut(hdc, 600, 55, strMouse, lstrlen(strMouse));
+
+	wsprintf(strMouse, TEXT("Enemy HP : %d "), enemy.HP);
 	TextOut(hdc, 600, 75, strMouse, lstrlen(strMouse));
 
+	if (MG_INPUT->isToggleKey(VK_TAB)) {
+
+		wsprintf(strMouse, TEXT("objectPoolSize : %d "), poolBullet.GetObjectPoolSize());
+		TextOut(hdc, 600, 95, strMouse, lstrlen(strMouse));
+
+		wsprintf(strMouse, TEXT("StockSize : %d "), poolBullet.GetStockSize());
+		TextOut(hdc, 600, 115, strMouse, lstrlen(strMouse));
+
+		wsprintf(strMouse, TEXT("player bullet on Map : %d "), (int)bullets.size());
+		TextOut(hdc, 600, 135, strMouse, lstrlen(strMouse));
+
+		//wsprintf(strMouse, TEXT("enemy bullet on Map  : %d "), (int)bullets2.size());
+		//TextOut(hdc, 600, 155, strMouse, lstrlen(strMouse));
+	}
 	
 }
 
 
 
-//Bullet
-void GameManager_Bullet::bulletMove()
-{
-	for (size_t i = 0; i < BULLETMAX; i++)
-	{
-		//발사된 총알은 영향을 주지말자
-		if (!bullet[i].isFire)continue;
-
-		OffsetRect(&bullet[i].rc, bullet[i].speed, 0);
-
-	}
-}
-
-//Player
-void GameManager_Bullet::bulletFire()
-{
-	for (size_t i = 0; i < BULLETMAX; i++)
-	{
-		//발사된 총알은 영향을 주지말자
-		if (bullet[i].isFire)continue;
-
-		bullet[i].isFire = true;
-		bullet[i].rc = RectMakeCenter(m_player1.right + 15,
-			m_player1.top + (m_player1.bottom - m_player1.top) / 2, 20, 20);
-		break;
-
-	}
-}
-
-
-//UI
-void GameManager_Bullet::gaugeDraw()
-{
-	if (m_gaugeFront.right - m_gaugeFront.left <= 200)
-	{
-		m_red = 200;
-	}
-	if (m_gaugeFront.right - m_gaugeFront.left <= 80)
-	{
-		m_red = 255;
-		m_green = 0;
-	}
-}
 
 
 
-//engine
-void GameManager_Bullet::collision()
-{
-	
-}
-
-//Input
-void GameManager_Bullet::playerKeyControl()
-{
-	if (InputManager->isStayKeyDown('W'))
-	{
-		OffsetRect(&m_player1, 0, -5);
-	}
-	if (InputManager->isStayKeyDown('S'))
-	{
-		OffsetRect(&m_player1, 0, 5);
-	}
-	if (InputManager->isOnceKeyDown(VK_SPACE))
-	{
-		bulletFire();
-	}
-}
 

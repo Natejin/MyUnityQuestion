@@ -8,7 +8,7 @@ public:
 	BulletPlayer(Vector2 pos, Vector2 size, Vector2 speed);
 	virtual ~BulletPlayer();
 	virtual void Move();
-	virtual void Input(int code);
+	virtual void InputManager(int code);
 	void bulletFire();
 	virtual void Render(HDC hdc);
 

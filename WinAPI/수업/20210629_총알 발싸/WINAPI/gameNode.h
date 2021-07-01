@@ -1,17 +1,25 @@
 #pragma once
-#include"framework.h"
 
-class gameNode
+#include "framework.h"
+#include "WINAPI_FrameWork.h"
+
+class GameNode
 {
+private:
+	static Image* m_backBuffer;
+	HDC _hdc;
 public:
-	gameNode();
-	virtual ~gameNode();
+	GameNode();
+	~GameNode();
 
-	virtual HRESULT init();
-	virtual void release();
-	virtual void update();
-	virtual void render(HDC hdc);
+	virtual HRESULT Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void LateUpdate();
+	virtual void Render();
 
-	LRESULT MainProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lParam);
+	HDC GetMemDC() { return m_backBuffer->GetMemDC(); }
+	HDC GetHDC() { return _hdc; }
+	static Image* SetBackBuffer();
+	LRESULT MainProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
-

@@ -146,9 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component\RigidBody.cpp" />
+    <ClCompile Include="Component\Transform.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Core\Structure\Color.cpp" />
+    <ClCompile Include="Core\Structure\Vector2.cpp" />
     <ClCompile Include="Core\Timer.cpp" />
+    <ClCompile Include="Obj\MoveObj.cpp" />
     <ClCompile Include="Obj\Obj.cpp" />
+    <ClCompile Include="Obj\Player.cpp" />
+    <ClCompile Include="Obj\StaticObj.cpp" />
+    <ClCompile Include="Ref.cpp" />
     <ClCompile Include="Scene\InGameScene.cpp" />
     <ClCompile Include="Scene\Layer.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
@@ -157,10 +165,19 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component\RigidBody.h" />
+    <ClInclude Include="Component\Transform.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="Core\Structure\Color.h" />
+    <ClInclude Include="Core\Structure\Vector2.h" />
     <ClInclude Include="Core\Timer.h" />
-    <ClInclude Include="Flag.h" />
+    <ClInclude Include="Enum.h" />
+    <ClInclude Include="Inline.h" />
+    <ClInclude Include="Obj\MoveObj.h" />
     <ClInclude Include="Obj\Obj.h" />
+    <ClInclude Include="Obj\Player.h" />
+    <ClInclude Include="Obj\StaticObj.h" />
+    <ClInclude Include="Ref.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene\InGameScene.h" />
     <ClInclude Include="Scene\Layer.h" />
@@ -176,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

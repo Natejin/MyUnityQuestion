@@ -1,5 +1,7 @@
 #pragma once
 #include "Scene.h"
+#include "../Obj/Player.h"
+#include "Layer.h"
 
 class InGameScene : public Scene
 {

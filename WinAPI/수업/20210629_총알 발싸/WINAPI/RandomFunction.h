@@ -1,11 +1,14 @@
 #pragma once
 
-#include"singleton.h"
-class RandomFunction :public Singleton<RandomFunction>
+#include "singleton.h"
+#include <Windows.h>
+class RandomManager :public Singleton<RandomManager>
 {
 public:
-	RandomFunction() { srand(GetTickCount()); };
-	~RandomFunction() {};
+	RandomManager() {  
+		//srand(GetTickCount64());
+	};
+	~RandomManager() {};
 
 	inline int GetInt(int num) { return rand() % num; }
 	inline int GetFromIntTo(int fromNum, int toNum)

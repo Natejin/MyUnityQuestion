@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -33,6 +29,19 @@
     </Filter>
     <Filter Include="01. Core\02 Structure">
       <UniqueIdentifier>{d5452927-2e9c-4798-9614-b04496897414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\03 Image">
+      <UniqueIdentifier>{0ba1c5a4-fee9-43e0-b8ce-aea91994ed32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04. Component">
+      <UniqueIdentifier>{2b457aa0-ef82-4171-be01-26a5d8666688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="03. Obj\01. Player">
+      <UniqueIdentifier>{381cfcc1-c61f-4666-96b6-2783fc560af8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +72,30 @@
     <ClCompile Include="Obj\Obj.cpp">
       <Filter>03. Obj</Filter>
     </ClCompile>
+    <ClCompile Include="Ref.cpp">
+      <Filter>01. Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Transform.cpp">
+      <Filter>04. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\RigidBody.cpp">
+      <Filter>04. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\MoveObj.cpp">
+      <Filter>03. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\StaticObj.cpp">
+      <Filter>03. Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Player.cpp">
+      <Filter>03. Obj\01. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Structure\Color.cpp">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Structure\Vector2.cpp">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -89,9 +122,6 @@
     <ClInclude Include="Scene\InGameScene.h">
       <Filter>02. Scene\SceneFilter</Filter>
     </ClInclude>
-    <ClInclude Include="Flag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Timer.h">
       <Filter>01. Core\01 Timer</Filter>
     </ClInclude>
@@ -104,6 +134,36 @@
     <ClInclude Include="Obj\Obj.h">
       <Filter>03. Obj</Filter>
     </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ref.h">
+      <Filter>01. Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Transform.h">
+      <Filter>04. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\RigidBody.h">
+      <Filter>04. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\MoveObj.h">
+      <Filter>03. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\StaticObj.h">
+      <Filter>03. Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Player.h">
+      <Filter>03. Obj\01. Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structure\Color.h">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structure\Vector2.h">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_Project_1.rc">
@@ -114,5 +174,10 @@
     <Image Include="icon1.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

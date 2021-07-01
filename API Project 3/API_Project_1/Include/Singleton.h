@@ -1,7 +1,4 @@
-
-
 #pragma once
-
 #include "Game.h"
 
 
@@ -19,7 +16,7 @@ public:
 	}
 
 	static void DestroyInst() {
-		if (pInstance)
+		if (pInstance != nullptr)
 		{
 			delete pInstance;
 			pInstance = nullptr;

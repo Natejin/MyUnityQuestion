@@ -9,25 +9,29 @@ private:
 	Layer();
 	~Layer();
 private:
-	string tag;
+	class Scene* pScene;
+	TAG tag;
 	int ZOreder;// 출력 순서
+	list<class Obj*> objList;
 
 public:
-	void SetTag(const string& tag) {
-		this->tag = tag;
-		
-	}
+	void SetTag(const TAG& tag) { this->tag = tag; }
+	void SetZOrder(const int& _zorder) { ZOreder = _zorder; }
+	void SetZOrder(Scene* pScene) { pScene = pScene; }
 
-	void SetZOrder(const int& _zorder) {
-		ZOreder =_zorder;
-	}
 
-	int GetZOrder() const {
-		return ZOreder;
-	}
+	int GetZOrder() const { return ZOreder; }
+	TAG GetTag() const { return tag; }
+	Scene* GetScene() const { return pScene; }
 
-	string GetTag() const {
-		return tag;
-	}
+public:
+	void AddObject(class Obj* pObj);
+
+public:
+	void Input(float deltaTime);
+	int Update(float deltaTime);
+	int LateUpdate(float deltaTime);
+	void Collision(float deltaTime);
+	void Render(HDC hdc, float deltaTime);
 };
 

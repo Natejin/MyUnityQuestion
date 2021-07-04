@@ -174,8 +174,10 @@ public:
 	inline int GetFrameY() { return (int)m_imageInfo->currentFrameY; }
 	inline void SetFrameY(int frameY) { (int)m_imageInfo->currentFrameY = frameY; }
 	// 프레임 가로 세로 크기 Get
+
 	inline int GetFrameWidth() { return (int)m_imageInfo->frameWidth; }
 	inline int GetFrameHeight() { return (int)m_imageInfo->frameHeight; }
+
 	// 맥스 프레임 x, y, Get
 	inline int GetMaxFrameX() { return (int)m_imageInfo->maxFrameX; }
 	inline int GetMaxFrameY() { return (int)m_imageInfo->maxFrameY; }

@@ -64,7 +64,7 @@ public:
 
     ObjectPool(int num) {
         maxSize = num;
-        for (int i = 0; i < maxSize; ++i) {
+		for (int i = 0; i < maxSize; ++i) {
             T* newObject = new T(instanceID, 0);
             instanceID++;
             queueObject.push(newObject);

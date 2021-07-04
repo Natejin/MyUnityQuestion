@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="01. Core">
+      <UniqueIdentifier>{b94483d9-1106-494f-9967-677a5ad6f651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{43e4c19b-fed2-4549-8e71-660ee96ce446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\SceneFilter">
+      <UniqueIdentifier>{471dcf4e-0ac7-47c4-92c7-0fbd33333207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\01 Timer">
+      <UniqueIdentifier>{76df55a2-8b29-457b-8e1d-6c9aa098a398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\Layer">
+      <UniqueIdentifier>{cffd0129-95cc-4a34-88f8-528dcfb215e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\02 Structure">
+      <UniqueIdentifier>{d5452927-2e9c-4798-9614-b04496897414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\03 Image">
+      <UniqueIdentifier>{0ba1c5a4-fee9-43e0-b8ce-aea91994ed32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="03. MonoBehavior">
+      <UniqueIdentifier>{bc822cab-fa6f-42a1-8206-1dd9210d3b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\00.Core">
+      <UniqueIdentifier>{e5adef94-c101-420e-b56a-fffa63aaf105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\00.Core">
+      <UniqueIdentifier>{25a811db-5011-4dd1-8480-fc9a88f241e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\00.Core\01. Component">
+      <UniqueIdentifier>{2b457aa0-ef82-4171-be01-26a5d8666688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\01. Unit">
+      <UniqueIdentifier>{381cfcc1-c61f-4666-96b6-2783fc560af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\02. Projectile">
+      <UniqueIdentifier>{bb1a06fb-5880-4d53-8941-8e9f06b7dbd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\01. Unit\01.Playable Unit">
+      <UniqueIdentifier>{959a6b66-f25f-4f29-bfb4-d404001a944f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\01. Unit\02. Enemy Unit">
+      <UniqueIdentifier>{534b1a02-8cff-4ef7-91d0-bde36b2f0543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\01. Unit\00. Unit">
+      <UniqueIdentifier>{4b44c140-afb4-4fe5-85c8-7ef50c5d53d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\06. Input">
+      <UniqueIdentifier>{6730cfd2-088e-44b0-8149-bec5804797bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\05. Design_Pattern">
+      <UniqueIdentifier>{80e71d26-75cc-4360-ab62-c364fc307824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\04. Audio">
+      <UniqueIdentifier>{1880fc3b-5526-49ac-a028-1a5cbac27c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\07. Path">
+      <UniqueIdentifier>{67608046-aa0c-46c9-bd6a-1757b7ed868a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Core\08. Resource">
+      <UniqueIdentifier>{efdb1f6e-0519-4000-adb4-62beed801247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\03. BackGround">
+      <UniqueIdentifier>{e92ef5de-c9a2-4481-afdc-9dab6717d99c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. MonoBehavior\04. Obsiticle">
+      <UniqueIdentifier>{19e5d14d-69e0-43a3-9d71-b93989d526ca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\InGameScene.cpp">
+      <Filter>02. Scene\SceneFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Timer.cpp">
+      <Filter>01. Core\01 Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Layer.cpp">
+      <Filter>02. Scene\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Transform.cpp">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\RigidBody.cpp">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Structure\Color.cpp">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Structure\Vector2.cpp">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Collider.cpp">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Core.cpp">
+      <Filter>01. Core\00.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Object.cpp">
+      <Filter>03. MonoBehavior\00.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\MonoBehavior.cpp">
+      <Filter>03. MonoBehavior\00.Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Singleton.cpp">
+      <Filter>01. Core\05. Design_Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Component.cpp">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Player.cpp">
+      <Filter>03. MonoBehavior\01. Unit\01.Playable Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Enemy.cpp">
+      <Filter>03. MonoBehavior\01. Unit\02. Enemy Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Unit.cpp">
+      <Filter>03. MonoBehavior\01. Unit\00. Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Projectile.cpp">
+      <Filter>03. MonoBehavior\02. Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\InputManager.cpp">
+      <Filter>01. Core\06. Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\FileManager.cpp">
+      <Filter>01. Core\07. Path</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ObjectPoolManager.cpp">
+      <Filter>01. Core\05. Design_Pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ResourceManager.cpp">
+      <Filter>01. Core\08. Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Sprite.cpp">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj\Background.cpp">
+      <Filter>03. MonoBehavior\03. BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Macro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\InGameScene.h">
+      <Filter>02. Scene\SceneFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Timer.h">
+      <Filter>01. Core\01 Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Layer.h">
+      <Filter>02. Scene\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\RigidBody.h">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structure\Color.h">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Structure\Vector2.h">
+      <Filter>01. Core\02 Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Collider.h">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Core.h">
+      <Filter>01. Core\00.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Object.h">
+      <Filter>03. MonoBehavior\00.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\MonoBehavior.h">
+      <Filter>03. MonoBehavior\00.Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Singleton.h">
+      <Filter>01. Core\05. Design_Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Component.h">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Global_Method.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Player.h">
+      <Filter>03. MonoBehavior\01. Unit\01.Playable Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Enemy.h">
+      <Filter>03. MonoBehavior\01. Unit\02. Enemy Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Unit.h">
+      <Filter>03. MonoBehavior\01. Unit\00. Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Projectile.h">
+      <Filter>03. MonoBehavior\02. Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\InputManager.h">
+      <Filter>01. Core\06. Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\FileManager.h">
+      <Filter>01. Core\07. Path</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ObjectPoolManager.h">
+      <Filter>01. Core\05. Design_Pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ResourceManager.h">
+      <Filter>01. Core\08. Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Sprite.h">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Transform.h">
+      <Filter>03. MonoBehavior\00.Core\01. Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj\Background.h">
+      <Filter>03. MonoBehavior\03. BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="API_Project_1.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Text.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
